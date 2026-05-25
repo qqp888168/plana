@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>活動相簿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --rose:#e8607a;--rose-lt:#fceef1;--rose-md:#f5c5cf;
+  --ink:#1e1a1d;--muted:#7a6f74;--surface:#fdf8f9;--white:#ffffff;
+  --radius:14px;--gap:20px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--ink);min-height:100vh;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:62px;background:rgba(253,248,249,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--rose-md);}
+.logo{display:flex;align-items:center;gap:8px;font-family:'Noto Serif TC',serif;font-size:18px;font-weight:600;color:var(--rose);text-decoration:none;}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--rose);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:13.5px;color:var(--muted);text-decoration:none;letter-spacing:.02em;transition:color .2s;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.btn-upload{font-size:13px;font-weight:500;color:var(--white);background:var(--rose);border:none;border-radius:8px;padding:8px 20px;cursor:pointer;transition:opacity .2s;font-family:'DM Sans',sans-serif;}
+.btn-upload:hover{opacity:.85;}
+.btn-add-album{font-size:13px;color:var(--muted);background:none;border:1px solid var(--rose-md);border-radius:8px;padding:7px 16px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.btn-add-album:hover{border-color:var(--rose);color:var(--rose);}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,#fceef1 0%,#fdf3e7 60%,#f9f0f6 100%);}
+.hero-bow{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.18;}
+.hero-bow svg{width:420px;}
+.hero-content{position:relative;text-align:center;}
+.hero-tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);background:var(--rose-lt);border:1px solid var(--rose-md);border-radius:20px;padding:4px 14px;margin-bottom:16px;}
+.hero-title{font-family:'Noto Serif TC',serif;font-size:40px;font-weight:300;color:var(--ink);line-height:1.15;letter-spacing:.04em;margin-bottom:12px;}
+.hero-title em{color:var(--rose);font-style:normal;}
+.hero-sub{font-size:14px;color:var(--muted);letter-spacing:.03em;}
+.hero-sub span{color:var(--rose);font-weight:500;}
+
+/* FILTER BAR */
+.filter-bar{display:flex;align-items:center;gap:8px;padding:28px 40px 0;max-width:1100px;margin:0 auto;flex-wrap:wrap;}
+.filter-btn{font-size:12.5px;padding:5px 14px;border-radius:20px;border:1px solid var(--rose-md);background:var(--white);color:var(--muted);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.filter-btn:hover{border-color:var(--rose);color:var(--rose);}
+.filter-btn.active{background:var(--rose);color:var(--white);border-color:var(--rose);}
+
+/* SECTION HEADER */
+.section-header{text-align:center;padding:40px 40px 24px;}
+.section-header h2{font-family:'Noto Serif TC',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:6px;}
+.section-header p{font-size:13.5px;color:var(--muted);}
+
+/* GALLERY */
+.gallery{max-width:1100px;margin:0 auto;padding:0 40px 80px;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);}
+.card{background:var(--white);border-radius:var(--radius);border:1px solid #f0e8eb;overflow:hidden;cursor:pointer;transition:transform .22s ease,box-shadow .22s ease;animation:fadeUp .4s ease both;}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(232,96,122,.12);}
+.card-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.card-img-placeholder{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-size:13px;color:var(--muted);}
+.card-img-placeholder svg{opacity:.25;}
+.card-body{padding:14px 16px 16px;}
+.card-title{font-family:'Noto Serif TC',serif;font-size:15px;font-weight:400;color:var(--ink);margin-bottom:4px;}
+.card-desc{font-size:12.5px;color:var(--muted);margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.card-meta{display:flex;align-items:center;justify-content:space-between;}
+.card-meta-left{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--rose);}
+.card-date{font-size:11px;color:var(--muted);}
+.card-tag{font-size:10.5px;color:var(--rose);background:var(--rose-lt);border-radius:4px;padding:2px 7px;margin-left:4px;}
+
+/* UPLOAD AREA */
+.upload-zone{max-width:1100px;margin:0 auto;padding:0 40px 28px;}
+.upload-box{border:2px dashed var(--rose-md);border-radius:var(--radius);padding:32px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;}
+.upload-box:hover,.upload-box.drag{border-color:var(--rose);background:var(--rose-lt);}
+.upload-box p{font-size:13.5px;color:var(--muted);margin-top:8px;}
+.upload-box strong{color:var(--rose);}
+.upload-box-hidden{display:none;}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;z-index:200;background:rgba(30,26,29,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;}
+.modal-bg.open{opacity:1;pointer-events:all;}
+.modal{background:var(--white);border-radius:18px;width:min(600px,94vw);overflow:hidden;transform:translateY(16px);transition:transform .25s;max-height:90vh;overflow-y:auto;}
+.modal-bg.open .modal{transform:translateY(0);}
+.modal-hero{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
+.modal-hero-placeholder{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:52px;}
+.modal-body{padding:24px 28px 28px;}
+.modal-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;}
+.modal-title{font-family:'Noto Serif TC',serif;font-size:20px;font-weight:400;color:var(--ink);}
+.modal-close-btn{background:none;border:none;font-size:18px;color:var(--muted);cursor:pointer;padding:2px 6px;line-height:1;}
+.modal-meta-row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:14px;flex-wrap:wrap;}
+.modal-desc{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.modal-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px;}
+.modal-photo{aspect-ratio:1;border-radius:8px;object-fit:cover;cursor:pointer;transition:opacity .2s;}
+.modal-photo:hover{opacity:.8;}
+.modal-photo-placeholder{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--rose-lt);font-size:20px;cursor:pointer;}
+.modal-photo-add{aspect-ratio:1;border-radius:8px;border:1.5px dashed var(--rose-md);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;background:none;}
+.modal-photo-add:hover{border-color:var(--rose);background:var(--rose-lt);}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;}
+.btn-close{font-size:13px;color:var(--muted);background:none;border:1px solid #e8dde1;border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-edit{font-size:13px;font-weight:500;color:var(--white);background:var(--rose);border:none;border-radius:8px;padding:8px 22px;cursor:pointer;transition:opacity .2s;font-family:'DM Sans',sans-serif;}
+.btn-edit:hover{opacity:.85;}
+
+/* ADD ALBUM MODAL */
+.add-modal-bg{position:fixed;inset:0;z-index:300;background:rgba(30,26,29,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;}
+.add-modal-bg.open{opacity:1;pointer-events:all;}
+.add-modal{background:var(--white);border-radius:18px;width:min(480px,94vw);padding:32px;transform:translateY(16px);transition:transform .25s;}
+.add-modal-bg.open .add-modal{transform:translateY(0);}
+.add-modal h2{font-family:'Noto Serif TC',serif;font-size:20px;font-weight:400;margin-bottom:24px;color:var(--ink);}
+.form-group{margin-bottom:16px;}
+.form-group label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px;letter-spacing:.03em;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--surface);border:1px solid var(--rose-md);border-radius:8px;padding:9px 12px;font-size:13.5px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;transition:border-color .2s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--rose);}
+.form-group textarea{resize:vertical;min-height:80px;}
+.form-row{display:flex;gap:12px;}
+.form-row .form-group{flex:1;}
+.add-form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:400;background:rgba(10,8,10,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
+.lightbox.open{opacity:1;pointer-events:all;}
+.lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;object-fit:contain;}
+.lb-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1;}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;font-size:22px;padding:12px 16px;cursor:pointer;border-radius:8px;transition:background .2s;}
+.lb-prev{left:20px;}.lb-next{right:20px;}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.22);}
+
+/* EMPTY STATE */
+.empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);}
+.empty-state svg{opacity:.2;margin-bottom:12px;}
+.empty-state p{font-size:14px;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.15s}
+.card:nth-child(4){animation-delay:.2s}.card:nth-child(5){animation-delay:.25s}.card:nth-child(6){animation-delay:.3s}
+.card:nth-child(7){animation-delay:.35s}.card:nth-child(8){animation-delay:.4s}.card:nth-child(9){animation-delay:.45s}
+
+/* FOOTER */
+footer{border-top:1px solid #f0e8eb;padding:36px 40px;text-align:center;}
+.footer-copy{font-size:12px;color:var(--muted);}
+
+@media(max-width:768px){
+  .gallery{grid-template-columns:repeat(2,1fr);padding:0 16px 60px;}
+  nav{padding:0 16px;}
+  .nav-links{display:none;}
+  .hero-title{font-size:28px;}
+  .filter-bar,.upload-zone{padding-left:16px;padding-right:16px;}
+  .section-header{padding:32px 16px 16px;}
+  .modal-photos{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo"><span class="logo-dot"></span><span id="siteName">活動相簿</span></a>
+  <ul class="nav-links">
+    <li><a class="active">所有相簿</a></li>
+    <li><a onclick="filterByTag('戶外')">戶外活動</a></li>
+    <li><a onclick="filterByTag('室內')">室內活動</a></li>
+    <li><a onclick="filterByTag('夜間')">夜間活動</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-add-album" onclick="openAddModal()">＋ 新增相簿</button>
+    <button class="btn-upload" onclick="triggerBatchUpload()">⬆ 上傳照片</button>
+    <input type="file" id="batchUpload" accept="image/*" multiple style="display:none" onchange="handleBatchUpload(event)">
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bow">
+    <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 100 C160 60, 60 20, 40 80 C20 140, 120 160, 200 100Z" fill="#e8607a"/>
+      <path d="M200 100 C240 60, 340 20, 360 80 C380 140, 280 160, 200 100Z" fill="#e8607a"/>
+      <ellipse cx="200" cy="100" rx="18" ry="18" fill="#c94060"/>
+      <path d="M195 120 C180 150, 170 180, 178 195" stroke="#e8607a" stroke-width="6" stroke-linecap="round"/>
+      <path d="M205 120 C220 150, 230 180, 222 195" stroke="#e8607a" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">Activity Gallery · 僅供內部</div>
+    <h1 class="hero-title">活動<em>花絮</em></h1>
+    <p class="hero-sub">共 <span id="totalAlbums">0</span> 個相簿 · <span id="totalPhotos">0</span> 張照片</p>
+  </div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active" onclick="filterAll(this)">全部</button>
+</div>
+
+<!-- SECTION HEADER -->
+<div class="section-header">
+  <h2>所有活動相簿</h2>
+  <p id="subTitle">點擊相簿查看照片 · 右上角可新增相簿或上傳照片</p>
+</div>
+
+<!-- GALLERY -->
+<main class="gallery" id="gallery">
+  <div class="empty-state">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+    <p>還沒有相簿，點擊右上角「＋ 新增相簿」開始建立</p>
+  </div>
+</main>
+
+<!-- ALBUM MODAL -->
+<div class="modal-bg" id="modalBg" onclick="handleModalBgClick(event)">
+  <div class="modal" id="modal">
+    <div id="modalHeroWrap"></div>
+    <div class="modal-body">
+      <div class="modal-top">
+        <div class="modal-title" id="modalTitle"></div>
+        <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-meta-row" id="modalMeta"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-photos" id="modalPhotos"></div>
+      <div class="modal-actions">
+        <button class="btn-close" onclick="closeModal()">關閉</button>
+        <button class="btn-edit" onclick="addPhotosToAlbum()">＋ 新增照片</button>
+        <input type="file" id="albumPhotoUpload" accept="image/*" multiple style="display:none" onchange="handleAlbumPhotos(event)">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- ADD ALBUM MODAL -->
+<div class="add-modal-bg" id="addModalBg" onclick="handleAddBgClick(event)">
+  <div class="add-modal">
+    <h2>新增相簿</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label>相簿名稱</label>
+        <input type="text" id="newAlbumTitle" placeholder="例：春季聯誼">
+      </div>
+      <div class="form-group">
+        <label>標籤</label>
+        <select id="newAlbumTag">
+          <option value="戶外">戶外</option>
+          <option value="室內">室內</option>
+          <option value="夜間">夜間</option>
+          <option value="聚餐">聚餐</option>
+          <option value="運動">運動</option>
+          <option value="其他">其他</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>活動日期</label>
+      <input type="date" id="newAlbumDate">
+    </div>
+    <div class="form-group">
+      <label>活動說明</label>
+      <textarea id="newAlbumDesc" placeholder="簡短描述這次活動..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>封面照片（選填）</label>
+      <input type="file" id="newAlbumCover" accept="image/*" style="font-size:13px;padding:6px 10px;">
+    </div>
+    <div class="add-form-actions">
+      <button class="btn-close" onclick="closeAddModal()">取消</button>
+      <button class="btn-edit" onclick="createAlbum()">建立相簿</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-copy">僅供內部使用 · 請勿對外分享</div>
+</footer>
+
+<script>
+let albums = [];
+let currentAlbumId = null;
+let lbImages = [];
+let lbIndex = 0;
+let activeTag = null;
+
+function genId(){ return Date.now() + Math.random().toString(36).slice(2); }
+
+function formatDate(str){
+  if(!str) return '';
+  const d = new Date(str);
+  return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+}
+
+function updateStats(){
+  const total = albums.length;
+  const photos = albums.reduce((s,a)=>s+(a.photos||[]).length,0);
+  document.getElementById('totalAlbums').textContent = total;
+  document.getElementById('totalPhotos').textContent = photos;
+}
+
+function buildFilterBar(){
+  const tags = [...new Set(albums.map(a=>a.tag).filter(Boolean))];
+  const bar = document.getElementById('filterBar');
+  const active = bar.querySelector('.filter-btn.active');
+  const activeText = active ? active.textContent : '全部';
+  bar.innerHTML = `<button class="filter-btn ${activeText==='全部'?'active':''}" onclick="filterAll(this)">全部</button>`;
+  tags.forEach(t=>{
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (activeText===t?' active':'');
+    btn.textContent = t;
+    btn.onclick = function(){ filterByTag(t, this); };
+    bar.appendChild(btn);
+  });
+}
+
+function renderGallery(list){
+  const el = document.getElementById('gallery');
+  if(!list || list.length===0){
+    el.innerHTML = `<div class="empty-state"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><p>沒有符合的相簿</p></div>`;
+    return;
+  }
+  el.innerHTML = list.map(a=>{
+    const imgHtml = a.cover
+      ? `<img class="card-img" src="${a.cover}" alt="${a.title}">`
+      : `<div class="card-img-placeholder" style="background:${a.bg||'#fceef1'}"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>`;
+    return `<div class="card" onclick="openModal('${a.id}')">
+      ${imgHtml}
+      <div class="card-body">
+        <div class="card-title">${a.title}</div>
+        <div class="card-desc">${a.desc||'點擊查看照片'}</div>
+        <div class="card-meta">
+          <div class="card-meta-left">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            ${(a.photos||[]).length} 張照片
+          </div>
+          <div style="display:flex;align-items:center;gap:4px">
+            <span class="card-date">${a.date?formatDate(a.date):''}</span>
+            ${a.tag?`<span class="card-tag">${a.tag}</span>`:''}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterAll(btn){
+  activeTag = null;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery(albums);
+  document.getElementById('subTitle').textContent = '點擊相簿查看照片 · 右上角可新增相簿或上傳照片';
+}
+
+function filterByTag(tag, btn){
+  activeTag = tag;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const filtered = albums.filter(a=>a.tag===tag);
+  renderGallery(filtered);
+  document.getElementById('subTitle').textContent = `「${tag}」活動 · 共 ${filtered.length} 個相簿`;
+}
+
+function openModal(id){
+  const a = albums.find(x=>x.id===id);
+  if(!a) return;
+  currentAlbumId = id;
+  // hero
+  const wrap = document.getElementById('modalHeroWrap');
+  if(a.cover){
+    wrap.innerHTML = `<img class="modal-hero" src="${a.cover}" alt="${a.title}">`;
+  } else {
+    wrap.innerHTML = `<div class="modal-hero-placeholder" style="background:${a.bg||'#fceef1'}"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#e8607a" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>`;
+  }
+  document.getElementById('modalTitle').textContent = a.title;
+  document.getElementById('modalDesc').textContent = a.desc || '';
+  document.getElementById('modalMeta').innerHTML = [
+    a.date ? `<span>📅 ${formatDate(a.date)}</span>` : '',
+    a.tag ? `<span style="color:var(--rose);background:var(--rose-lt);padding:2px 8px;border-radius:4px;font-size:11px">${a.tag}</span>` : '',
+    `<span>${(a.photos||[]).length} 張照片</span>`
+  ].filter(Boolean).join('<span style="color:var(--rose-md)">·</span>');
+
+  const photos = a.photos || [];
+  lbImages = photos;
+  const grid = document.getElementById('modalPhotos');
+  grid.innerHTML = photos.map((src,i)=>
+    `<img class="modal-photo" src="${src}" alt="照片${i+1}" onclick="openLightbox(${i})">`
+  ).join('') + `<div class="modal-photo-add" onclick="addPhotosToAlbum()" title="新增照片"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8607a" stroke-width="1.8"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>`;
+  document.getElementById('modalBg').classList.add('open');
+}
+
+function closeModal(){document.getElementById('modalBg').classList.remove('open');}
+function handleModalBgClick(e){if(e.target===document.getElementById('modalBg'))closeModal();}
+
+function addPhotosToAlbum(){document.getElementById('albumPhotoUpload').click();}
+
+function handleAlbumPhotos(e){
+  const files = Array.from(e.target.files);
+  const a = albums.find(x=>x.id===currentAlbumId);
+  if(!a) return;
+  let loaded = 0;
+  files.forEach(f=>{
+    const r = new FileReader();
+    r.onload = ev=>{
+      a.photos.push(ev.target.result);
+      loaded++;
+      if(loaded===files.length){
+        updateStats();
+        openModal(currentAlbumId);
+        const displayed = document.querySelector(`.card[onclick="openModal('${currentAlbumId}')"] .card-meta-left`);
+        if(displayed) displayed.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg> ${a.photos.length} 張照片`;
+        renderGallery(activeTag?albums.filter(x=>x.tag===activeTag):albums);
+      }
+    };
+    r.readAsDataURL(f);
+  });
+  e.target.value='';
+}
+
+// Lightbox
+function openLightbox(idx){
+  lbIndex = idx;
+  document.getElementById('lbImg').src = lbImages[idx];
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+function lbNav(dir){
+  lbIndex = (lbIndex+dir+lbImages.length)%lbImages.length;
+  document.getElementById('lbImg').src = lbImages[lbIndex];
+}
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
+
+// Add Album
+function openAddModal(){
+  document.getElementById('newAlbumDate').value = new Date().toISOString().slice(0,10);
+  document.getElementById('addModalBg').classList.add('open');
+}
+function closeAddModal(){document.getElementById('addModalBg').classList.remove('open');}
+function handleAddBgClick(e){if(e.target===document.getElementById('addModalBg'))closeAddModal();}
+
+const bgPalette=['#fceef1','#fff3e0','#e8f5e9','#e3f2fd','#f3e5f5','#fff8e1','#ede7f6','#e8f5e9'];
+
+function createAlbum(){
+  const title = document.getElementById('newAlbumTitle').value.trim();
+  if(!title){document.getElementById('newAlbumTitle').focus();return;}
+  const tag = document.getElementById('newAlbumTag').value;
+  const date = document.getElementById('newAlbumDate').value;
+  const desc = document.getElementById('newAlbumDesc').value.trim();
+  const coverFile = document.getElementById('newAlbumCover').files[0];
+  const id = genId();
+  const bg = bgPalette[albums.length % bgPalette.length];
+  const newAlbum = {id, title, tag, date, desc, bg, photos:[], cover:null};
+
+  function finish(){
+    albums.unshift(newAlbum);
+    buildFilterBar();
+    renderGallery(activeTag?albums.filter(x=>x.tag===activeTag):albums);
+    updateStats();
+    closeAddModal();
+    document.getElementById('newAlbumTitle').value='';
+    document.getElementById('newAlbumDesc').value='';
+    document.getElementById('newAlbumCover').value='';
+  }
+
+  if(coverFile){
+    const r = new FileReader();
+    r.onload = ev=>{newAlbum.cover=ev.target.result;finish();};
+    r.readAsDataURL(coverFile);
+  } else {
+    finish();
+  }
+}
+
+// Batch upload (assign to latest album or create new)
+function triggerBatchUpload(){
+  if(albums.length===0){alert('請先新增一個相簿，再上傳照片。');return;}
+  document.getElementById('batchUpload').click();
+}
+function handleBatchUpload(e){
+  const files = Array.from(e.target.files);
+  // upload to most recent album
+  const a = albums[0];
+  currentAlbumId = a.id;
+  let loaded=0;
+  files.forEach(f=>{
+    const r=new FileReader();
+    r.onload=ev=>{
+      a.photos.push(ev.target.result);
+      loaded++;
+      if(loaded===files.length){
+        renderGallery(activeTag?albums.filter(x=>x.tag===activeTag):albums);
+        updateStats();
+      }
+    };
+    r.readAsDataURL(f);
+  });
+  e.target.value='';
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();closeLightbox();closeAddModal();}
+  if(document.getElementById('lightbox').classList.contains('open')){
+    if(e.key==='ArrowLeft')lbNav(-1);
+    if(e.key==='ArrowRight')lbNav(1);
+  }
+});
+
+// Demo data
+const demo=[
+  {id:genId(),title:'春季聯誼 · 下午茶',tag:'室內',date:'2025-03-22',desc:'在輕鬆愉快的氛圍中展開春天第一場聯誼',bg:'#fceef1',photos:[],cover:null},
+  {id:genId(),title:'山林健走活動',tag:'戶外',date:'2025-04-05',desc:'踏青賞花、呼吸新鮮空氣的美好一日',bg:'#e8f5e9',photos:[],cover:null},
+  {id:genId(),title:'夜市美食團',tag:'夜間',date:'2025-05-10',desc:'一起探索城市角落的美味小吃',bg:'#fff3e0',photos:[],cover:null},
+];
+albums = demo;
+buildFilterBar();
+renderGallery(albums);
+updateStats();
+</script>
+</body>
+</html>
