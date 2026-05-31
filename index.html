@@ -81,12 +81,6 @@ nav{
   content:'';position:absolute;bottom:-21px;left:50%;transform:translateX(-50%);
   width:22px;height:2.5px;background:var(--rose);border-radius:2px;
 }
-.nav-cta{
-  background:var(--rose);color:#fff;border:none;border-radius:9px;
-  padding:10px 26px;font-size:14px;font-weight:500;cursor:pointer;
-  font-family:'DM Sans',sans-serif;transition:opacity .2s;
-}
-.nav-cta:hover{opacity:.88;}
 
 /* ── HERO ── */
 .hero{
@@ -94,12 +88,6 @@ nav{
   line-height:0;
 }
 .hero-img{width:100%;display:block;max-height:100vh;object-fit:cover;}
-.hero-change-btn{
-  position:absolute;bottom:14px;right:16px;
-  background:rgba(0,0,0,.45);color:#fff;font-size:11px;
-  padding:6px 14px;border-radius:6px;font-family:'DM Sans',sans-serif;
-  z-index:5;line-height:1.4;pointer-events:none;
-}
 
 /* ── FEATURE THUMBNAILS ── */
 .feat-section{background:#fff;padding:24px 32px 40px;}
@@ -202,7 +190,6 @@ nav{
   <span>✏️ 點擊文字可編輯</span>
   <div class="sb-mid">
     <select class="sb-select" id="imgTarget" aria-label="選擇要更換的圖片">
-      <option value="hero" style="background:#3A1020;">Hero 主照片</option>
       <option value="0" style="background:#3A1020;">多元課程 縮圖</option>
       <option value="1" style="background:#3A1020;">公益參與 縮圖</option>
       <option value="2" style="background:#3A1020;">溫暖同行 縮圖</option>
@@ -237,19 +224,16 @@ nav{
     <li><a href="about.html">關於我們</a></li>
     <li><a href="contact.html">聯絡我們</a></li>
   </ul>
-  <button class="nav-cta" onclick="location.href='courses.html'">立即報名</button>
+
 </nav>
 
 <!-- HERO -->
-<section class="hero" title="點擊更換主照片" aria-label="主視覺區塊"
-  onclick="document.getElementById('heroInput').click()">
+<section class="hero" aria-label="主視覺區塊">
   <img id="heroBgImg"
     src="https://qqp888168.github.io/plana/images/007.jpg"
     alt="共學與你 — 一起學習，一起把溫暖傳出去"
     class="hero-img"
     loading="eager">
-  <div class="hero-change-btn" aria-hidden="true">🖼 點擊更換照片</div>
-  <input type="file" id="heroInput" accept="image/*" style="display:none" onchange="setHeroImg(event)" aria-hidden="true">
 </section>
 
 <!-- FEATURE CARDS -->
@@ -323,24 +307,12 @@ nav{
 
 <script>
 // ── 圖片更換 ──
-function setHeroImg(e) {
-  const f = e.target.files[0];
-  if (!f) return;
-  document.getElementById('heroBgImg').src = URL.createObjectURL(f);
-  e.target.value = '';
-  showToast('✅ Hero 照片已更換，記得儲存！');
-}
-
 function applyImgUrl() {
   const t = document.getElementById('imgTarget').value;
   const url = document.getElementById('imgUrlInput').value.trim();
   if (!url) { showToast('⚠️ 請先貼上圖片網址'); return; }
-  if (t === 'hero') {
-    document.getElementById('heroBgImg').src = url;
-  } else {
-    const img = document.getElementById('thumbImg' + parseInt(t));
-    if (img) img.src = url;
-  }
+  const img = document.getElementById('thumbImg' + parseInt(t));
+  if (img) img.src = url;
   document.getElementById('imgUrlInput').value = '';
   showToast('✅ 圖片已套用！記得儲存網頁');
 }
