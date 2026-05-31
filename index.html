@@ -163,11 +163,48 @@ nav{
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
+/* ── HAMBURGER ── */
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:36px;height:36px;background:none;border:none;cursor:pointer;
+  padding:4px;border-radius:7px;transition:background .2s;
+}
+.nav-hamburger:hover{background:var(--rose-lt);}
+.nav-hamburger span{
+  display:block;width:22px;height:2px;background:var(--rose);
+  border-radius:2px;transition:all .3s;transform-origin:center;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.nav-drawer{
+  display:none;position:fixed;top:0;right:0;bottom:0;width:72vw;max-width:280px;
+  background:#fff;z-index:200;box-shadow:-4px 0 24px rgba(51,37,42,.12);
+  flex-direction:column;padding:80px 28px 40px;gap:4px;
+  transform:translateX(100%);transition:transform .3s ease;
+}
+.nav-drawer.open{transform:translateX(0);}
+.nav-drawer li{list-style:none;}
+.nav-drawer li a{
+  display:block;font-size:16px;color:#6E4E58;padding:12px 4px;
+  border-bottom:1px solid var(--border);transition:color .2s;
+}
+.nav-drawer li a:hover,.nav-drawer li.active a{color:var(--rose);font-weight:500;}
+.nav-overlay{
+  display:none;position:fixed;inset:0;background:rgba(51,37,42,.35);
+  z-index:199;opacity:0;transition:opacity .3s;
+}
+.nav-overlay.open{opacity:1;}
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav{padding:0 20px;}
   .nav-center{display:none;}
   .nav-logo-sub{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-drawer{display:flex;}
+  .nav-overlay{display:block;}
   .feat-section{padding:16px;}
   .why-section{padding:40px 16px;}
   .stats-section{padding:48px 20px;}
@@ -224,8 +261,20 @@ nav{
     <li><a href="about.html">關於我們</a></li>
     <li><a href="contact.html">聯絡我們</a></li>
   </ul>
-
+  <button class="nav-hamburger" id="hamburger" aria-label="開啟選單" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-overlay" id="navOverlay" onclick="toggleDrawer()"></div>
+<ul class="nav-drawer" id="navDrawer">
+  <li class="active"><a href="index.html" onclick="toggleDrawer()">首頁</a></li>
+  <li><a href="courses.html" onclick="toggleDrawer()">課程總覽</a></li>
+  <li><a href="charity.html" onclick="toggleDrawer()">公益參與</a></li>
+  <li><a href="about.html" onclick="toggleDrawer()">關於我們</a></li>
+  <li><a href="contact.html" onclick="toggleDrawer()">聯絡我們</a></li>
+</ul>
 
 <!-- HERO -->
 <section class="hero" aria-label="主視覺區塊">
@@ -306,6 +355,18 @@ nav{
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+// ── 漢堡選單 ──
+function toggleDrawer() {
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('navDrawer');
+  const overlay = document.getElementById('navOverlay');
+  const isOpen = drawer.classList.contains('open');
+  hamburger.classList.toggle('open', !isOpen);
+  drawer.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+
 // ── 圖片更換 ──
 function applyImgUrl() {
   const t = document.getElementById('imgTarget').value;
