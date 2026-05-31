@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>共學與你 · 首頁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --rose:#C25668;--rose-deep:#B04458;--rose-lt:#FBF0F2;--rose-md:#EEC4CC;
+  --ink:#33252A;--muted:#9A7882;--white:#fff;--border:#F0DEE3;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--ink);}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+
+/* ── SAVE BAR ── */
+.save-bar{
+  background:#1E0E14;padding:7px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  flex-wrap:wrap;
+}
+.save-bar>span{font-size:11.5px;color:rgba(255,255,255,.4);white-space:nowrap;}
+.sb-mid{display:flex;align-items:center;gap:8px;flex:1;min-width:0;}
+.sb-select{
+  font-size:12px;padding:4px 8px;border-radius:5px;
+  border:1px solid rgba(255,255,255,.2);background:#3A1020;color:#fff;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+}
+.sb-input{
+  flex:1;min-width:0;font-size:12px;padding:4px 10px;border-radius:5px;
+  border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);
+  color:#fff;font-family:'DM Sans',sans-serif;outline:none;
+}
+.sb-apply{
+  font-size:12px;padding:5px 14px;border-radius:5px;
+  background:rgba(255,255,255,.15);color:#fff;border:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;white-space:nowrap;
+}
+.save-btn{
+  font-size:12.5px;font-weight:500;background:var(--rose);color:#fff;
+  border:none;border-radius:6px;padding:6px 18px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;white-space:nowrap;
+}
+.save-confirm{
+  position:fixed;bottom:24px;left:50%;
+  transform:translateX(-50%) translateY(50px);
+  background:#1E0E14;color:#fff;padding:10px 24px;border-radius:8px;
+  font-size:13px;font-family:'DM Sans',sans-serif;
+  opacity:0;transition:all .3s;z-index:9999;pointer-events:none;
+}
+.save-confirm.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── NAV ── */
+nav{
+  background:#fff;padding:0 44px;height:66px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;border-bottom:1px solid #F5E8EC;
+}
+.nav-logo{display:flex;align-items:center;gap:11px;}
+.nav-logo-box{
+  width:38px;height:38px;background:var(--rose);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.nav-logo-box svg{width:20px;height:20px;}
+.nav-logo-texts{display:flex;align-items:center;gap:14px;}
+.nav-logo-name{font-family:'Noto Serif TC',serif;font-size:18px;font-weight:600;color:var(--rose);}
+.nav-logo-sub{font-size:12px;color:var(--muted);}
+.nav-center{display:flex;gap:2px;list-style:none;}
+.nav-center li a{
+  font-size:14px;color:#6E4E58;padding:6px 18px;display:block;
+  transition:color .2s;position:relative;
+}
+.nav-center li a:hover{color:var(--ink);}
+.nav-center li.active a{color:var(--rose);font-weight:500;}
+.nav-center li.active a::after{
+  content:'';position:absolute;bottom:-21px;left:50%;transform:translateX(-50%);
+  width:22px;height:2.5px;background:var(--rose);border-radius:2px;
+}
+
+/* ── HERO ── */
+.hero{
+  position:relative;width:100%;overflow:hidden;cursor:pointer;
+  line-height:0;
+}
+.hero-img{width:100%;display:block;max-height:100vh;object-fit:cover;}
+
+/* ── FEATURE THUMBNAILS ── */
+.feat-section{background:#fff;padding:24px 32px 40px;}
+.feat-grid{
+  max-width:100%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.feat-card{
+  border-radius:16px;overflow:hidden;
+  cursor:pointer;position:relative;display:block;
+}
+.feat-card img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+
+/* ── WHY US ── */
+.why-section{background:#fff;padding:64px 16px;}
+.why-inner{max-width:1600px;margin:0 auto;}
+.section-eyebrow{
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--rose);font-weight:500;margin-bottom:10px;
+}
+.section-title{
+  font-family:'Noto Serif TC',serif;font-size:30px;font-weight:400;
+  color:var(--ink);margin-bottom:40px;
+}
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+  align-items:start;
+}
+.why-card{
+  border-radius:18px;overflow:hidden;background:#fff;
+  border:1px solid #F2DFE4;
+  box-shadow:0 12px 32px rgba(194,86,104,.08);
+  line-height:0;
+}
+.why-card img{width:100%;height:auto;display:block;}
+
+/* ── STATS ── */
+.stats-section{background:var(--rose-lt);padding:72px 48px;}
+.stats-inner{max-width:960px;margin:0 auto;}
+.stats-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:40px;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.stat-card{
+  background:#fff;border-radius:12px;padding:24px 20px;
+  text-align:center;border:1px solid var(--border);
+}
+.stat-num{
+  font-family:'Noto Serif TC',serif;font-size:28px;font-weight:600;
+  color:var(--rose);margin-bottom:4px;
+}
+.stat-label{font-size:12.5px;color:var(--muted);}
+
+/* ── EDITABLE ── */
+[contenteditable]{
+  outline:none;border-radius:3px;transition:box-shadow .15s;
+  cursor:text;
+}
+[contenteditable]:hover{box-shadow:0 0 0 2px rgba(194,86,104,.22);}
+[contenteditable]:focus{box-shadow:0 0 0 2px rgba(194,86,104,.5);background:rgba(194,86,104,.04);}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(60px);
+  background:var(--rose);color:#fff;padding:11px 26px;border-radius:9px;
+  font-size:13.5px;font-weight:500;opacity:0;transition:all .3s;
+  z-index:9999;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .nav-center{display:none;}
+  .nav-logo-sub{display:none;}
+  .feat-section{padding:16px;}
+  .why-section{padding:40px 16px;}
+  .stats-section{padding:48px 20px;}
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .save-bar{padding:8px 12px;gap:8px;}
+  .sb-mid{flex-wrap:wrap;}
+  .feat-grid{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .section-title{font-size:22px;}
+}
+</style>
+</head>
+<body>
+
+<!-- SAVE BAR -->
+<div class="save-bar" role="toolbar" aria-label="編輯工具列">
+  <span>✏️ 點擊文字可編輯</span>
+  <div class="sb-mid">
+    <select class="sb-select" id="imgTarget" aria-label="選擇要更換的圖片">
+      <option value="0" style="background:#3A1020;">多元課程 縮圖</option>
+      <option value="1" style="background:#3A1020;">公益參與 縮圖</option>
+      <option value="2" style="background:#3A1020;">溫暖同行 縮圖</option>
+    </select>
+    <input class="sb-input" id="imgUrlInput" type="url" inputmode="url"
+      placeholder="貼上圖片網址 例：https://example.com/image.jpg"
+      aria-label="圖片網址">
+    <button class="sb-apply" onclick="applyImgUrl()">套用</button>
+  </div>
+  <button class="save-btn" onclick="saveHTML()">⬇ 儲存網頁</button>
+</div>
+<div class="save-confirm" id="saveConfirm" role="status" aria-live="polite">✅ 已下載，照片已一併儲存</div>
+
+<!-- NAV -->
+<nav aria-label="主選單">
+  <div class="nav-logo">
+    <div class="nav-logo-box" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 21C12 21 4 14.5 4 8.5C4 5.5 6 4 8 4C9.8 4 11.2 5 12 6.5C12.8 5 14.2 4 16 4C18 4 20 5.5 20 8.5C20 14.5 12 21 12 21Z" fill="#fff"/>
+        <path d="M9 9h6M9 11.5h6" stroke="#C25668" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="nav-logo-texts">
+      <span class="nav-logo-name" contenteditable="true" aria-label="網站名稱">共學與你</span>
+      <span class="nav-logo-sub" contenteditable="true" aria-label="網站副標語">一起學習，一起把溫暖傳出去</span>
+    </div>
+  </div>
+  <ul class="nav-center">
+    <li class="active"><a href="index.html">首頁</a></li>
+    <li><a href="courses.html">課程總覽</a></li>
+    <li><a href="charity.html">公益參與</a></li>
+    <li><a href="about.html">關於我們</a></li>
+    <li><a href="contact.html">聯絡我們</a></li>
+  </ul>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="主視覺區塊">
+  <img id="heroBgImg"
+    src="https://qqp888168.github.io/plana/images/007.jpg"
+    alt="共學與你 — 一起學習，一起把溫暖傳出去"
+    class="hero-img"
+    loading="eager">
+</section>
+
+<!-- FEATURE CARDS -->
+<section class="feat-section" aria-label="精選項目">
+  <div class="feat-grid">
+    <a href="courses.html" class="feat-card" aria-label="多元課程">
+      <img id="thumbImg0"
+        src="https://qqp888168.github.io/plana/images/008.jpg"
+        alt="多元課程"
+        loading="lazy">
+    </a>
+    <a href="charity.html" class="feat-card" aria-label="公益參與">
+      <img id="thumbImg1"
+        src="https://qqp888168.github.io/plana/images/009.jpg"
+        alt="公益參與"
+        loading="lazy">
+    </a>
+    <a href="about.html" class="feat-card" aria-label="溫暖同行">
+      <img id="thumbImg2"
+        src="https://qqp888168.github.io/plana/images/010.jpg"
+        alt="溫暖同行"
+        loading="lazy">
+    </a>
+  </div>
+</section>
+
+<!-- 為什麼選擇我們 -->
+<section class="why-section" aria-labelledby="why-title">
+  <div class="why-inner">
+    <div class="section-eyebrow" contenteditable="true" aria-label="區塊標籤">為什麼選擇我們</div>
+    <div class="section-title" id="why-title" contenteditable="true">學習有意義，行動有溫度</div>
+    <div class="why-grid">
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/011.jpg" alt="專業課程內容" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/012.jpg" alt="學習化為公益" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/013.jpg" alt="彈性學習時程" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/014.jpg" alt="社群共學氛圍" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/015.jpg" alt="貼心推薦協助" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/016.jpg" alt="安全學習環境" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 累積影響力 -->
+<section class="stats-section" aria-labelledby="stats-title">
+  <div class="stats-inner">
+    <div class="section-eyebrow" contenteditable="true" aria-label="區塊標籤">累積影響力</div>
+    <div class="section-title" id="stats-title" contenteditable="true">每一位學員，都在改變世界</div>
+    <div class="stats-desc" contenteditable="true">從 2020 年創立至今，我們共同創造了這些真實的影響。</div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" contenteditable="true" aria-label="偏鄉孩童受益人數">2,140</div>
+        <div class="stat-label" contenteditable="true">偏鄉孩童受益</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" contenteditable="true" aria-label="偏鄉教室修繕數">38</div>
+        <div class="stat-label" contenteditable="true">間偏鄉教室修繕</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" contenteditable="true" aria-label="弱勢家庭受助數">560</div>
+        <div class="stat-label" contenteditable="true">弱勢家庭受助</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" contenteditable="true" aria-label="服務縣市數">12</div>
+        <div class="stat-label" contenteditable="true">個縣市服務範圍</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// ── 圖片更換 ──
+function applyImgUrl() {
+  const t = document.getElementById('imgTarget').value;
+  const url = document.getElementById('imgUrlInput').value.trim();
+  if (!url) { showToast('⚠️ 請先貼上圖片網址'); return; }
+  const img = document.getElementById('thumbImg' + parseInt(t));
+  if (img) img.src = url;
+  document.getElementById('imgUrlInput').value = '';
+  showToast('✅ 圖片已套用！記得儲存網頁');
+}
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── blob → base64 ──
+async function imgToBase64(url) {
+  if (!url || !url.startsWith('blob:')) return url;
+  try {
+    const res = await fetch(url);
+    const blob = await res.blob();
+    return await new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onload = () => resolve(fr.result);
+      fr.onerror = () => reject(new Error('FileReader failed'));
+      fr.readAsDataURL(blob);
+    });
+  } catch (e) {
+    console.warn('imgToBase64 failed:', e);
+    return url;
+  }
+}
+
+// ── 儲存 HTML ──
+async function saveHTML() {
+  const btn = document.querySelector('.save-btn');
+  btn.textContent = '儲存中...';
+  btn.disabled = true;
+  try {
+    // 把 blob URL 轉 base64
+    for (const img of document.querySelectorAll('img[src]')) {
+      if (img.src && img.src.startsWith('blob:')) {
+        img.src = await imgToBase64(img.src);
+      }
+    }
+    // 暫時移除 contenteditable 以便下載乾淨的 HTML
+    const eds = document.querySelectorAll('[contenteditable]');
+    eds.forEach(el => el.removeAttribute('contenteditable'));
+    const blob = new Blob(
+      ['<!DOCTYPE html>\n' + document.documentElement.outerHTML],
+      { type: 'text/html;charset=utf-8' }
+    );
+    eds.forEach(el => el.setAttribute('contenteditable', 'true'));
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '共學與你_首頁.html';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+    document.getElementById('saveConfirm').classList.add('show');
+    setTimeout(() => document.getElementById('saveConfirm').classList.remove('show'), 3000);
+  } catch (err) {
+    console.error('saveHTML error:', err);
+    showToast('❌ 儲存失敗，請再試一次');
+  } finally {
+    btn.textContent = '⬇ 儲存網頁';
+    btn.disabled = false;
+  }
+}
+
+// ── contenteditable 互動優化 ──
+document.querySelectorAll('[contenteditable]').forEach(el => {
+  el.addEventListener('click', e => e.stopPropagation());
+  el.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+  });
+});
+</script>
+</body>
+</html>
