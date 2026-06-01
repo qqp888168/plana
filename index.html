@@ -279,7 +279,7 @@ nav{
 <!-- HERO -->
 <section class="hero" aria-label="主視覺區塊">
   <img id="heroBgImg"
-    src="https://qqp888168.github.io/plana/images/007.jpg"
+    src="https://qqp888168.github.io/plana/images/007.webp"
     alt="共學與你 — 一起學習，一起把溫暖傳出去"
     class="hero-img"
     loading="eager">
@@ -290,19 +290,19 @@ nav{
   <div class="feat-grid">
     <a href="courses.html" class="feat-card" aria-label="多元課程">
       <img id="thumbImg0"
-        src="https://qqp888168.github.io/plana/images/008.jpg"
+        src="https://qqp888168.github.io/plana/images/008.webp"
         alt="多元課程"
         loading="lazy">
     </a>
     <a href="charity.html" class="feat-card" aria-label="公益參與">
       <img id="thumbImg1"
-        src="https://qqp888168.github.io/plana/images/009.jpg"
+        src="https://qqp888168.github.io/plana/images/009.webp"
         alt="公益參與"
         loading="lazy">
     </a>
     <a href="about.html" class="feat-card" aria-label="溫暖同行">
       <img id="thumbImg2"
-        src="https://qqp888168.github.io/plana/images/010.jpg"
+        src="https://qqp888168.github.io/plana/images/010.webp"
         alt="溫暖同行"
         loading="lazy">
     </a>
@@ -315,12 +315,12 @@ nav{
     <div class="section-eyebrow" contenteditable="true" aria-label="區塊標籤">為什麼選擇我們</div>
     <div class="section-title" id="why-title" contenteditable="true">學習有意義，行動有溫度</div>
     <div class="why-grid">
-      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/011.jpg" alt="專業課程內容" loading="lazy"></div>
-      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/012.jpg" alt="學習化為公益" loading="lazy"></div>
-      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/013.jpg" alt="彈性學習時程" loading="lazy"></div>
-      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/014.jpg" alt="社群共學氛圍" loading="lazy"></div>
-      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/015.jpg" alt="貼心推薦協助" loading="lazy"></div>
-      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/016.jpg" alt="安全學習環境" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/011.webp" alt="專業課程內容" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/012.webp" alt="學習化為公益" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/013.webp" alt="彈性學習時程" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/014.webp" alt="社群共學氛圍" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/015.webp" alt="貼心推薦協助" loading="lazy"></div>
+      <div class="why-card"><img src="https://qqp888168.github.io/plana/images/016.webp" alt="安全學習環境" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -410,13 +410,11 @@ async function saveHTML() {
   btn.textContent = '儲存中...';
   btn.disabled = true;
   try {
-    // 把 blob URL 轉 base64
     for (const img of document.querySelectorAll('img[src]')) {
       if (img.src && img.src.startsWith('blob:')) {
         img.src = await imgToBase64(img.src);
       }
     }
-    // 暫時移除 contenteditable 以便下載乾淨的 HTML
     const eds = document.querySelectorAll('[contenteditable]');
     eds.forEach(el => el.removeAttribute('contenteditable'));
     const blob = new Blob(
