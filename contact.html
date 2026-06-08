@@ -3,387 +3,364 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>共學與你 · 聯絡我們</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>聯絡我們｜課程詢問、活動報名與 LINE 諮詢 — 共學與你</title>
+<meta name="description" content="想了解共學與你的熟齡課程、活動報名或公益參與資訊，歡迎透過 LINE 加入好友或填寫表單詢問，也可寄信至 joyfullearn@outlook.com，我們會盡快回覆。">
+<meta name="keywords" content="共學與你聯絡,課程詢問,LINE課程報名,熟齡課程諮詢,活動報名,公益志工報名,LINE詢問">
+<link rel="canonical" href="https://learnwithyou.tw/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="聯絡我們｜課程詢問、活動報名與 LINE 諮詢 — 共學與你">
+<meta property="og:description" content="想了解共學與你的熟齡課程或公益活動，歡迎透過 LINE 加入好友或填寫表單與我們聯繫。">
+<meta property="og:url" content="https://learnwithyou.tw/contact.html">
+<meta property="og:image" content="https://learnwithyou.tw/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="共學與你">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="聯絡我們｜課程詢問、活動報名與 LINE 諮詢 — 共學與你">
+<meta name="twitter:description" content="想了解共學與你的熟齡課程或公益活動，歡迎透過 LINE 或表單與我們聯繫。">
+<meta name="twitter:image" content="https://learnwithyou.tw/images/og-image.jpg">
+<link rel="stylesheet" href="css/global.css">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --rose:#C25668;--rose-deep:#B04458;--rose-lt:#FBF0F2;--rose-md:#EEC4CC;
-  --ink:#33252A;--muted:#9A7882;--white:#fff;--border:#F0DEE3;
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 56px;
+  align-items: start;
 }
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--ink);}
-a{text-decoration:none;color:inherit;}
-
-/* SAVE BAR */
-.save-bar{background:#1E0E14;padding:7px 40px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
-.save-bar>span{font-size:11.5px;color:rgba(255,255,255,.4);white-space:nowrap;}
-.sb-mid{display:flex;align-items:center;gap:8px;flex:1;}
-.sb-select{font-size:12px;padding:4px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.2);background:#3A1020;color:#fff;font-family:'DM Sans',sans-serif;cursor:pointer;}
-.sb-input{flex:1;font-size:12px;padding:4px 10px;border-radius:5px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-family:'DM Sans',sans-serif;outline:none;}
-.sb-apply{font-size:12px;padding:5px 14px;border-radius:5px;background:rgba(255,255,255,.15);color:#fff;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
-.save-btn{font-size:12.5px;font-weight:500;background:var(--rose);color:#fff;border:none;border-radius:6px;padding:6px 18px;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
-.save-confirm{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(50px);background:#1E0E14;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;}
-.save-confirm.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-/* NAV */
-nav{background:#fff;padding:0 44px;height:66px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid #F5E8EC;}
-.nav-logo{display:flex;align-items:center;gap:11px;}
-.nav-logo-box{width:38px;height:38px;background:var(--rose);border-radius:9px;display:flex;align-items:center;justify-content:center;}
-.nav-logo-box svg{width:20px;height:20px;}
-.nav-logo-texts{display:flex;align-items:center;gap:14px;}
-.nav-logo-name{font-family:'Noto Serif TC',serif;font-size:18px;font-weight:600;color:var(--rose);}
-.nav-logo-sub{font-size:12px;color:var(--muted);}
-.nav-center{display:flex;gap:2px;list-style:none;}
-.nav-center li a{font-size:14px;color:#6E4E58;padding:6px 18px;display:block;transition:color .2s;position:relative;}
-.nav-center li a:hover{color:var(--ink);}
-.nav-center li.active a{color:var(--rose);font-weight:500;}
-.nav-center li.active a::after{content:'';position:absolute;bottom:-21px;left:50%;transform:translateX(-50%);width:22px;height:2.5px;background:var(--rose);border-radius:2px;}
-.nav-cta{background:var(--rose);color:#fff;border:none;border-radius:9px;padding:10px 26px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .2s;}
-.nav-cta:hover{opacity:.88;}
-
-/* HERO */
-.hero{position:relative;background:var(--rose-lt);min-height:560px;display:grid;grid-template-columns:40% 60%;overflow:hidden;}
-/* soft wave bottom left */
-.hero::before{content:'';position:absolute;bottom:0;left:0;width:45%;height:120px;background:radial-gradient(ellipse at bottom left,rgba(238,196,204,.5),transparent 70%);pointer-events:none;z-index:1;}
-
-/* LEFT */
-.hero-left{padding:60px 40px 60px 56px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:3;}
-.hero-topline{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);letter-spacing:.04em;margin-bottom:18px;}
-.hero-topline::after{content:'';display:inline-block;width:40px;height:1px;background:var(--rose-md);}
-.hero-heart{color:var(--rose);font-size:14px;}
-.hero-h1{font-family:'Noto Serif TC',serif;font-size:64px;font-weight:400;line-height:1.05;color:var(--ink);margin-bottom:14px;letter-spacing:.03em;}
-.hero-h1 em{color:var(--rose);font-style:normal;background:linear-gradient(135deg,var(--rose),#D98A9A);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.hero-h2{font-family:'Noto Serif TC',serif;font-size:27px;font-weight:400;color:var(--rose);margin-bottom:26px;letter-spacing:.08em;}
-.hero-h2 b{font-weight:400;}
-.hero-h2 .dot{color:var(--rose);}
-.hero-h2 .gray{color:#8A6A72;}
-.hero-p{font-size:14px;color:#7A5862;line-height:2;margin-bottom:34px;max-width:330px;}
-.hero-btns{display:flex;gap:14px;}
-.btn-rose{background:var(--rose);color:#fff;padding:13px 34px;border-radius:9px;font-size:14.5px;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .2s;display:inline-block;}
-.btn-rose:hover{opacity:.88;}
-.btn-rose-outline{background:transparent;color:var(--rose);border:1.5px solid var(--rose-md);padding:12px 30px;border-radius:9px;font-size:14.5px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:inline-block;}
-.btn-rose-outline:hover{background:rgba(238,196,204,.25);}
-
-/* RIGHT IMAGE */
-.hero-right{position:relative;overflow:hidden;cursor:pointer;}
-.hero-right>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
-.hero-right-fade{position:absolute;inset:0;background:linear-gradient(105deg,var(--rose-lt) 0%,rgba(251,240,242,.55) 18%,transparent 45%);pointer-events:none;}
-.hero-change-btn{position:absolute;bottom:14px;right:16px;background:rgba(0,0,0,.4);color:#fff;font-size:11px;padding:5px 12px;border-radius:5px;font-family:'DM Sans',sans-serif;z-index:5;}
-
-/* FLOATING STATS on image */
-.hero-stats{position:absolute;bottom:38px;right:40px;left:42%;display:grid;grid-template-columns:repeat(3,1fr);background:rgba(60,30,40,.42);backdrop-filter:blur(14px);border-radius:14px;overflow:hidden;z-index:4;border:1px solid rgba(255,255,255,.12);}
-.hstat{padding:18px 20px;display:flex;align-items:center;gap:11px;border-right:1px solid rgba(255,255,255,.15);}
-.hstat:last-child{border-right:none;}
-.hstat-icon{width:24px;height:24px;flex-shrink:0;opacity:.95;}
-.hstat-icon svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.6;}
-.hstat-num{font-family:'Noto Serif TC',serif;font-size:21px;font-weight:600;color:#fff;line-height:1;}
-.hstat-label{font-size:11px;color:rgba(255,255,255,.75);margin-top:4px;}
-
-/* FEAT SECTION */
-
-
-
-
-
-
-
-.feat-card-icon svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;}
-
-
-
-
-
-
-/* EDITABLE */
-[contenteditable]{outline:none;border-radius:3px;transition:box-shadow .15s;}
-[contenteditable]:hover{box-shadow:0 0 0 2px rgba(194,86,104,.22);}
-[contenteditable]:focus{box-shadow:0 0 0 2px rgba(194,86,104,.5);background:rgba(194,86,104,.04);}
-
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--rose);color:#fff;padding:11px 26px;border-radius:9px;font-size:13.5px;font-weight:500;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;}
-  .hero-right{min-height:300px;}
-  .hero-stats{position:static;left:auto;margin:20px 56px 0;}
-  
+.contact-form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+}
+.form-group { margin-bottom: 24px; }
+.form-label {
+  display: block;
+  font-family: 'Noto Serif TC', serif;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--bark);
+  margin-bottom: 8px;
+}
+.form-label span { color: var(--gold); }
+.form-control {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: var(--fs-md);
+  color: var(--charcoal);
+  background: var(--cream);
+  transition: border-color .25s, box-shadow .25s;
+  outline: none;
+  -webkit-appearance: none;
+  min-height: 50px;
+}
+.form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200,149,108,.15);
+}
+.form-control::placeholder { color: rgba(107,87,68,.4); }
+textarea.form-control { resize: vertical; min-height: 130px; line-height: 1.7; }
+select.form-control { cursor: pointer; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-sm);
+  color: var(--warm-mid);
+  cursor: pointer;
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: white;
+  transition: border-color .2s, color .2s;
+}
+.checkbox-group label:has(input:checked) { border-color: var(--gold); color: var(--gold-dk); }
+.checkbox-group input { accent-color: var(--gold); }
+.form-submit {
+  width: 100%;
+  padding: 15px;
+  background: var(--gold);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: var(--fs-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 8px;
+  min-height: 52px;
+}
+.form-submit:hover { background: var(--gold-dk); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.form-note {
+  font-size: var(--fs-xs);
+  color: var(--warm-mid);
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.7;
+}
+.success-msg {
+  display: none;
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  color: #2e7d32;
+  font-size: var(--fs-md);
+  margin-top: 16px;
+  line-height: 1.8;
 }
 
+.info-card {
+  background: white;
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+}
+.info-card h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.info-item { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+.info-item:last-child { margin-bottom: 0; }
+.info-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(200,149,108,.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .95rem;
+  flex-shrink: 0;
+}
+.info-text-label { font-size: var(--fs-xs); color: var(--gold); margin-bottom: 2px; }
+.info-text-val { font-size: var(--fs-sm); color: var(--charcoal); line-height: 1.65; }
 
-/* PAGE HEADER */
-.page-header{background:var(--rose);padding:52px 48px;color:#fff;}
-.page-header h1{font-family:'Noto Serif TC',serif;font-size:36px;font-weight:300;letter-spacing:.04em;margin-bottom:8px;}
-.page-header p{font-size:14px;color:rgba(255,255,255,.65);}
-.breadcrumb{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
-.breadcrumb span{cursor:pointer;transition:color .2s;}
-.breadcrumb span:hover{color:rgba(255,255,255,.8);}
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.faq-item {
+  background: white;
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid var(--gold);
+}
+.faq-q {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 10px;
+  line-height: 1.5;
+}
+.faq-q::before { content: 'Q.'; color: var(--gold); flex-shrink: 0; }
+.faq-a { font-size: var(--fs-sm); color: var(--warm-mid); line-height: 1.9; padding-left: 24px; }
 
-/* SECTIONS */
-.section{padding:56px 40px;}
-.container{max-width:900px;margin:0 auto;}
-.sec-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:10px;}
-.sec-title{font-family:'Noto Serif TC',serif;font-size:30px;font-weight:400;color:var(--ink);margin-bottom:10px;}
-.sec-sub{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:40px;}
-
-/* CARDS */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
-.card{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .22s,box-shadow .22s;}
-.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(194,86,104,.1);}
-.card-thumb{height:150px;display:flex;align-items:center;justify-content:center;font-size:36px;}
-.card-body{padding:16px 18px 20px;}
-.card-tag{display:inline-block;font-size:10.5px;font-weight:500;padding:3px 9px;border-radius:4px;margin-bottom:8px;}
-.tag-warm{background:var(--rose-lt);color:#9E3050;}
-.tag-amber{background:#FEEAF0;color:#7A3A22;}
-.tag-blue{background:#E6F1FB;color:#0C447C;}
-.card-title{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:400;color:var(--ink);margin-bottom:6px;}
-.card-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
-.card-meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);}
-.card-price{font-size:15px;font-weight:500;color:var(--rose);}
-
-/* CAUSE CARDS */
-.cause-card{display:flex;gap:20px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px;transition:box-shadow .2s;}
-.cause-card:hover{box-shadow:0 6px 20px rgba(194,86,104,.08);}
-.cause-icon{width:60px;height:60px;border-radius:14px;background:var(--rose-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:26px;cursor:pointer;position:relative;overflow:hidden;}
-.cause-body{flex:1;}
-.cause-title{font-family:'Noto Serif TC',serif;font-size:17px;font-weight:400;color:var(--ink);margin-bottom:5px;}
-.cause-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px;}
-.progress-bar{height:6px;background:var(--rose-lt);border-radius:3px;overflow:hidden;margin-bottom:6px;}
-.progress-fill{height:100%;background:var(--rose);border-radius:3px;}
-.progress-meta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);}
-.donate-btn{margin-top:12px;background:var(--rose);color:#fff;border:none;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .2s;}
-.donate-btn:hover{opacity:.85;}
-
-/* ABOUT */
-.about-hero{background:var(--rose);color:#fff;padding:60px 48px;}
-.about-hero h1{font-family:'Noto Serif TC',serif;font-size:38px;font-weight:300;margin-bottom:12px;}
-.about-hero p{font-size:15px;color:rgba(255,255,255,.7);max-width:520px;line-height:1.75;}
-.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:16px;}
-.value-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;}
-.value-num{font-family:'Noto Serif TC',serif;font-size:36px;font-weight:300;color:var(--rose-md);line-height:1;margin-bottom:10px;}
-.value-title{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px;}
-.value-desc{font-size:13px;color:var(--muted);line-height:1.65;}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px;}
-.team-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;}
-.team-avatar{width:56px;height:56px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:500;color:#fff;}
-.team-name{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px;}
-.team-role{font-size:12px;color:var(--muted);}
-
-/* CONTACT */
-.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
-.contact-info h2{font-family:'Noto Serif TC',serif;font-size:26px;font-weight:400;margin-bottom:14px;color:var(--ink);}
-.contact-info p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:28px;}
-.contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;}
-.contact-item-icon{width:40px;height:40px;border-radius:10px;background:var(--rose-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.contact-item-icon svg{width:18px;height:18px;stroke:var(--rose);fill:none;stroke-width:1.8;}
-.contact-item-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px;}
-.contact-item-val{font-size:13px;color:var(--muted);}
-.contact-map{background:var(--rose-lt);border-radius:14px;height:200px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted);border:1px solid var(--border);margin-top:20px;}
-.reg-form-box{background:#fff;border:1px solid var(--border);border-radius:14px;padding:32px;}
-.reg-form-box h2{font-family:'Noto Serif TC',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:24px;}
-.form-group{margin-bottom:18px;}
-.form-label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px;letter-spacing:.03em;}
-.form-input,.form-select,.form-textarea{width:100%;background:#FDF8FA;border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;transition:border-color .2s;}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--rose);}
-.form-textarea{resize:vertical;min-height:90px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.submit-btn{width:100%;background:var(--rose);color:#fff;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .2s;margin-top:8px;}
-.submit-btn:hover{opacity:.85;}
-
-/* IMPACT */
-.impact-section{background:var(--rose-lt);padding:72px 48px;}
-.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.impact-card{background:#fff;border-radius:12px;padding:24px 20px;text-align:center;border:1px solid var(--border);}
-.impact-num{font-family:'Noto Serif TC',serif;font-size:28px;font-weight:600;color:var(--rose);margin-bottom:4px;}
-.impact-label{font-size:12.5px;color:var(--muted);}
-
-/* TOAST */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--rose);color:#fff;padding:11px 26px;border-radius:9px;font-size:13.5px;font-weight:500;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+@media (max-width: 1100px) { .contact-layout { grid-template-columns: 1fr; } .contact-form-card { padding: 32px 24px; } }
+@media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } .faq-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-<div class="save-bar">
-  <span>✏️ 點擊文字可編輯</span>
-  <div style="display:flex;align-items:center;gap:8px;flex:1;margin:0 16px;">
-    <select id="imgTarget" style="font-size:12px;padding:5px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:#3D1F2E;color:#fff;font-family:'DM Sans',sans-serif;cursor:pointer;">
-<option value="hero" style="background:#3D1F2E;color:#fff;">Hero 背景</option>
-<option value="0" style="background:#3D1F2E;color:#fff;">課程卡片 1</option>
-<option value="1" style="background:#3D1F2E;color:#fff;">課程卡片 2</option>
-<option value="2" style="background:#3D1F2E;color:#fff;">課程卡片 3</option>
-<option value="3" style="background:#3D1F2E;color:#fff;">課程卡片 4</option>
-<option value="4" style="background:#3D1F2E;color:#fff;">課程卡片 5</option>
-<option value="5" style="background:#3D1F2E;color:#fff;">課程卡片 6</option>
-<option value="6" style="background:#3D1F2E;color:#fff;">課程卡片 7</option>
-<option value="7" style="background:#3D1F2E;color:#fff;">課程卡片 8</option>
-<option value="8" style="background:#3D1F2E;color:#fff;">課程卡片 9</option>
-<option value="9" style="background:#3D1F2E;color:#fff;">公益計畫 1</option>
-<option value="10" style="background:#3D1F2E;color:#fff;">公益計畫 2</option>
-<option value="11" style="background:#3D1F2E;color:#fff;">公益計畫 3</option>
-<option value="12" style="background:#3D1F2E;color:#fff;">公益計畫 4</option>
-<option value="13" style="background:#3D1F2E;color:#fff;">團隊成員 1</option>
-<option value="14" style="background:#3D1F2E;color:#fff;">團隊成員 2</option>
-<option value="15" style="background:#3D1F2E;color:#fff;">團隊成員 3</option>
-<option value="16" style="background:#3D1F2E;color:#fff;">團隊成員 4</option>
-</select>
-    <input id="imgUrlInput" type="text" placeholder="貼上圖片網址 例：https://qqp888168.github.io/plana/images/001.jpg" style="flex:1;font-size:12px;padding:5px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff;font-family:'DM Sans',sans-serif;outline:none;">
-    <button onclick="applyImgUrl()" style="font-size:12px;padding:6px 16px;border-radius:6px;background:rgba(255,255,255,.2);color:#fff;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:background .2s;">套用圖片</button>
+
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo"><span class="logo-cn">共學與你</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="about.html">關於我們</a></li>
+      <li><a href="courses.html">課程總覽</a></li>
+      <li><a href="gallery.html">公益花絮</a></li>
+      <li><a href="contact.html" class="nav-cta active">聯絡我們</a></li>
+    </ul>
+    <button class="hamburger"><span></span><span></span><span></span></button>
   </div>
-  <button class="save-btn" onclick="saveHTML()">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    儲存網頁
-  </button>
-</div>
-<div class="save-confirm" id="saveConfirm">✅ 完成</div>
-<nav>
-  <div class="nav-logo">
-    <div class="nav-logo-box"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21C12 21 4 14.5 4 8.5C4 5.5 6 4 8 4C9.8 4 11.2 5 12 6.5C12.8 5 14.2 4 16 4C18 4 20 5.5 20 8.5C20 14.5 12 21 12 21Z" fill="#fff"/><path d="M9 9h6M9 11.5h6" stroke="#C25668" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-    <div class="nav-logo-texts">
-      <span class="nav-logo-name" contenteditable="true">共學與你</span>
-      <span class="nav-logo-sub" contenteditable="true">一起學習，一起把溫暖傳出去</span>
-    </div>
-  </div>
-  <ul class="nav-center"><li><a href="index.html">首頁</a></li>
-<li><a href="courses.html">課程總覽</a></li>
-<li><a href="charity.html">公益參與</a></li>
-<li><a href="about.html">關於我們</a></li>
-<li class="active"><a href="contact.html">聯絡我們</a></li>
-</ul>
-  
 </nav>
-<div>
-  <div class="page-header">
-    <div class="breadcrumb"><span href="index.html" contenteditable="true">首頁</span> › 聯絡我們</div>
-    <h1 contenteditable="true">聯絡我們</h1>
-    <p contenteditable="true">有任何問題或合作提案，歡迎隨時與我們聯繫</p>
+<nav class="mobile-menu">
+  <a href="index.html">首頁</a><a href="about.html">關於我們</a>
+  <a href="courses.html">課程總覽</a><a href="gallery.html">公益花絮</a><a href="contact.html">聯絡我們</a>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:0;">聯絡我們</h1>
+    <p class="section-sub">想了解課程、活動或社群資訊，都可以透過 LINE 與我們聯繫，我們會盡量協助您了解適合的內容。</p>
+    <nav class="breadcrumb"><a href="index.html">首頁</a><span>›</span><span>聯絡我們</span></nav>
   </div>
-  <section class="section">
-    <div class="container">
-      <div class="contact-layout">
-        <div class="contact-info">
-          <h2 contenteditable="true">我們很樂意回答你</h2>
-          <p contenteditable="true">課程諮詢、公益合作、媒體採訪、企業培訓，任何事情都歡迎來信或填寫右側表單。</p>
-          <div class="contact-item">
-            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="contact-item-title" contenteditable="true">電子信箱</div><div class="contact-item-val" contenteditable="true">hello@shanhsuegonghao.org</div></div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-            <div><div class="contact-item-title" contenteditable="true">聯絡電話</div><div class="contact-item-val" contenteditable="true">(02) 2345-6789（週一至週五 10:00–18:00）</div></div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div><div class="contact-item-title" contenteditable="true">辦公室地址</div><div class="contact-item-val" contenteditable="true">台北市大安區復興南路一段 123 號 5 樓</div></div>
-          </div>
-          <div class="contact-map">📍 地圖載入區域（可嵌入 Google Maps）</div>
-        </div>
-        <div class="reg-form-box" style="margin-top:0;">
-          <h2 contenteditable="true">傳送訊息</h2>
+</div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- Form -->
+      <div class="contact-form-card reveal">
+        <span class="label">填寫諮詢</span>
+        <div class="divider"></div>
+        <h2 class="section-heading" style="font-size:1.5rem;margin-bottom:28px;">填寫課程或活動諮詢</h2>
+
+        <form id="contactForm">
           <div class="form-row">
-            <div class="form-group"><label class="form-label">姓名</label><input class="form-input" type="text" placeholder="你的名字"></div>
-            <div class="form-group"><label class="form-label">聯絡信箱</label><input class="form-input" type="email" placeholder="your@email.com"></div>
+            <div class="form-group">
+              <label class="form-label">您的姓名 <span>*</span></label>
+              <input type="text" class="form-control" placeholder="怎麼稱呼您？" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">聯絡方式 <span>*</span></label>
+              <input type="text" class="form-control" placeholder="電話或 LINE ID" required>
+            </div>
           </div>
-          <div class="form-group"><label class="form-label">主旨</label><select class="form-select"><option>請選擇</option><option>課程相關問題</option><option>公益合作提案</option><option>企業培訓洽詢</option><option>媒體採訪</option><option>其他</option></select></div>
-          <div class="form-group"><label class="form-label">訊息內容</label><textarea class="form-textarea" placeholder="請詳細描述你的問題或想法…" style="min-height:130px;"></textarea></div>
-          <button class="submit-btn" onclick="showToast('訊息已送出！我們會在 2 個工作天內回覆你。')">送出訊息</a>
+          <div class="form-group">
+            <label class="form-label">詢問事項 <span>*</span></label>
+            <select class="form-control" required>
+              <option value="" disabled selected>請選擇詢問類型</option>
+              <option>課程詢問</option>
+              <option>活動詢問</option>
+              <option>公益活動</option>
+              <option>合作洽談</option>
+              <option>其他問題</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">有興趣的課程類型</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox"> 手作體驗</label>
+              <label><input type="checkbox"> 料理課程</label>
+              <label><input type="checkbox"> 健康活動</label>
+              <label><input type="checkbox"> 走讀導覽</label>
+              <label><input type="checkbox"> 公益活動</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">留言內容</label>
+            <textarea class="form-control" placeholder="想了解什麼都可以說，不用客氣，慢慢說就好…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">送出諮詢表單</button>
+          <p class="form-note">送出後我們會盡快回覆，若較急迫可直接透過 LINE 聯繫。</p>
+        </form>
+        <div class="success-msg" id="successMsg">
+          感謝您的來信！我們已收到您的訊息，<br>會盡快與您聯繫，請稍待。
         </div>
       </div>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="info-card reveal">
+          <h3>聯絡資訊</h3>
+          <div class="info-item">
+            <div class="info-icon">💬</div>
+            <div>
+              <div class="info-text-label">LINE</div>
+              <div class="info-text-val"><a href="https://line.me/ti/p/v8M9_69-YB" target="_blank" style="color:var(--gold-dk);">加入好友</a>（最快的聯繫方式）</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div>
+              <div class="info-text-label">Email</div>
+              <div class="info-text-val"><a href="mailto:joyfullearn@outlook.com" style="color:var(--gold-dk);">joyfullearn@outlook.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card reveal" style="background:linear-gradient(135deg,var(--bark),#5C3520);border:none;">
+          <h3 style="color:white;border-bottom-color:rgba(255,255,255,.15);">加入 LINE 好友</h3>
+          <p style="font-size:var(--fs-sm);color:rgba(255,255,255,.75);line-height:1.85;margin-bottom:18px;">透過 LINE 加入好友，第一時間收到課程資訊與活動通知。</p>
+          <a href="https://line.me/ti/p/v8M9_69-YB" target="_blank" style="display:block;background:rgba(255,255,255,.08);border-radius:8px;padding:20px;text-align:center;border:1px solid rgba(255,255,255,.12);text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+            <div style="font-size:2.5rem;margin-bottom:8px;">💚</div>
+            <div style="font-family:'Noto Serif TC',serif;font-size:.9rem;color:white;">點此加入 LINE 好友</div>
+          </a>
+        </div>
+      </aside>
     </div>
-  </section>
-</div>
+  </div>
+</section>
 
-<div class="toast" id="toast"></div>
+<!-- FAQ -->
+<section class="section" style="background:var(--ivory);">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-heading">常見問題</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-q">課程一定要有基礎才能參加嗎？</div>
+        <div class="faq-a">多數課程都以輕鬆體驗為主，沒有基礎也可以先了解看看。我們整理的課程通常都對初學者友善。</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-q">如何知道最新課程？</div>
+        <div class="faq-a">可透過 LINE 或社群公告查看，我們會陸續整理各地課程資訊，有新的課程也會第一時間通知。</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-q">課程地點固定嗎？</div>
+        <div class="faq-a">不一定，會依不同課程與地區安排，實際地點以各課程的公告為準，報名後也會再次確認。</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-3">
+        <div class="faq-q">可以先詢問再決定嗎？</div>
+        <div class="faq-a">可以，不用急著報名，先了解課程內容、時間與費用都沒問題。我們歡迎大家先問清楚再決定。</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">公益活動也可以參與嗎？</div>
+        <div class="faq-a">若有開放志工或參與名額，會在社群中公告。有意願參與的朋友可以先透過 LINE 登記意願。</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-q">費用怎麼看？</div>
+        <div class="faq-a">每堂課費用不同，請以當次課程公告為準。部分公益性質的活動不收費，詳情請見各次公告說明。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-cn">共學與你</span>
+        <p>共學與你是一個整理熟齡課程、活動花絮與公益陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速連結</h4>
+        <a href="index.html">首頁</a><a href="about.html">關於我們</a>
+        <a href="courses.html">課程總覽</a><a href="gallery.html">公益花絮</a><a href="contact.html">聯絡我們</a>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>聯絡資訊</h4>
+        <p><span>💬</span><span>LINE：<a href="https://line.me/ti/p/v8M9_69-YB" target="_blank" style="color:rgba(255,255,255,.65);">加入好友</a></span></p>
+        <p><span>✉️</span><span>Email：<a href="mailto:joyfullearn@outlook.com" style="color:rgba(255,255,255,.65);">joyfullearn@outlook.com</a></span></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 共學與你｜版權所有</p>
+      <div class="social-links">
+        <a href="#">f</a>
+        <a href="#" style="font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:600;">LINE</a>
+        <a href="#">◎</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="js/nav.js"></script>
 <script>
-
-function setHeroBg(e){
-  const file=e.target.files[0]; if(!file)return;
-  const url=URL.createObjectURL(file);
-  const img=document.getElementById('heroBgImg');
-  if(img){img.src=url;img.style.display='block';}
-  const ov=document.getElementById('heroOverlay');
-  if(ov)ov.style.display='block';
-  const hs=document.getElementById('heroSection');
-  if(hs)hs.style.background='transparent';
-  const hint=document.getElementById('heroUploadHint');
-  if(hint)hint.textContent='🖼 點擊更換背景照片';
-  e.target.value='';
-}
-function setThumbImg(e,idx){
-  const file=e.target.files[0]; if(!file)return;
-  const url=URL.createObjectURL(file);
-  const img=document.getElementById('thumbImg'+idx);
-  if(img){img.src=url;img.style.display='block';}
-  const em=document.getElementById('thumbEmoji'+idx);
-  if(em)em.style.display='none';
-  e.target.value='';
-}
-function applyImgUrl(){
-  const target=document.getElementById('imgTarget').value;
-  const url=document.getElementById('imgUrlInput').value.trim();
-  if(!url){alert('請先貼上圖片網址');return;}
-  if(target==='hero'){
-    const img=document.getElementById('heroBgImg');
-    if(img){img.src=url;img.style.display='block';}
-    const ov=document.getElementById('heroOverlay');
-    if(ov)ov.style.display='block';
-    const hs=document.getElementById('heroSection');
-    if(hs)hs.style.background='transparent';
-  } else {
-    const idx=parseInt(target);
-    const img=document.getElementById('thumbImg'+idx);
-    if(img){img.src=url;img.style.display='block';}
-    const em=document.getElementById('thumbEmoji'+idx);
-    if(em)em.style.display='none';
-  }
-  document.getElementById('imgUrlInput').value='';
-  showToast('✅ 圖片已套用！記得儲存網頁');
-}
-function showToast(msg){
-  const t=document.getElementById('toast');
-  if(!t)return;
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3000);
-}
-function handleSubmit(){ showToast('報名成功！感謝你的參與 ♥'); }
-async function imgToBase64(url){
-  if(!url||url.startsWith('data:'))return url;
-  try{
-    const res=await fetch(url);
-    const blob=await res.blob();
-    return await new Promise(resolve=>{
-      const r=new FileReader();
-      r.onload=()=>resolve(r.result);
-      r.readAsDataURL(blob);
-    });
-  }catch(e){return url;}
-}
-async function saveHTML(){
-  const btn=document.querySelector('.save-btn');
-  btn.textContent='儲存中...'; btn.disabled=true;
-  const allImgs=document.querySelectorAll('img[src]');
-  for(const img of allImgs){
-    if(img.src&&img.src.startsWith('blob:'))img.src=await imgToBase64(img.src);
-  }
-  const editables=document.querySelectorAll('[contenteditable]');
-  editables.forEach(el=>el.removeAttribute('contenteditable'));
-  const clone=document.documentElement.outerHTML;
-  editables.forEach(el=>el.setAttribute('contenteditable','true'));
-  const blob=new Blob(['<!DOCTYPE html>\n'+clone],{type:'text/html;charset=utf-8'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url; a.download=document.title+'_編輯版.html'; a.click();
-  URL.revokeObjectURL(url);
-  btn.innerHTML='儲存網頁'; btn.disabled=false;
-  showToast('✅ 已下載！照片已一併儲存');
-}
-document.querySelectorAll('[contenteditable]').forEach(el=>{
-  el.addEventListener('click',e=>e.stopPropagation());
-  el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();el.blur();}});
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  this.style.display = 'none';
+  const msg = document.getElementById('successMsg');
+  msg.style.display = 'block';
+  window.scrollTo({ top: msg.offsetTop - 120, behavior: 'smooth' });
 });
-
-
 </script>
 </body>
 </html>

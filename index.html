@@ -3,569 +3,1023 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>共學與你 · 首頁</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>共學與你｜熟齡課程、生活學習與公益陪伴社群</title>
+<meta name="description" content="共學與你是台灣熟齡課程與公益陪伴社群，整理適合中高齡朋友參與的手作、料理、健康、走讀與公益活動，也記錄每一次課程花絮與志工服務紀錄，讓退休生活更有溫度、更有期待。">
+<meta name="keywords" content="熟齡課程,中高齡課程,退休生活,終身學習,手作課程,料理課程,健康活動,公益活動,走讀導覽,志工服務,共學與你,新北公益">
+<link rel="canonical" href="https://learnwithyou.tw/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="共學與你｜熟齡課程、生活學習與公益陪伴社群">
+<meta property="og:description" content="共學與你是台灣熟齡課程與公益陪伴社群，整理適合中高齡朋友參與的課程、活動與公益紀錄，讓退休生活更有溫度與期待。">
+<meta property="og:url" content="https://learnwithyou.tw/">
+<meta property="og:image" content="https://learnwithyou.tw/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="共學與你">
+<meta property="og:locale" content="zh_TW">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="共學與你｜熟齡課程、生活學習與公益陪伴社群">
+<meta name="twitter:description" content="共學與你是台灣熟齡課程與公益陪伴社群，整理適合中高齡朋友參與的課程、活動與公益紀錄。">
+<meta name="twitter:image" content="https://learnwithyou.tw/images/og-image.jpg">
+<link rel="stylesheet" href="css/global.css">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --rose:#C25668;--rose-deep:#B04458;--rose-lt:#FBF0F2;--rose-md:#EEC4CC;
-  --ink:#33252A;--muted:#9A7882;--white:#fff;--border:#F0DEE3;
+/* ── Hero ── */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--nav-h);
 }
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--ink);overflow-x:hidden;}
-a{text-decoration:none;color:inherit;}
-img{display:block;max-width:100%;}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 clamp(48px, 7vw, 96px);
+  position: relative;
+  z-index: 2;
+}
+.hero-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cream);
+  z-index: -1;
+}
+/* eyebrow 小標籤 */
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.hero-eyebrow .line {
+  width: 28px; height: 1.5px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+/* 主標題：兩段式，大小錯落 */
+.hero-title {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 600;
+  color: var(--bark);
+  line-height: 1.3;
+  margin-bottom: 0;
+}
+.hero-title-main {
+  /* 「共學與你」— 大，重量感 */
+  display: block;
+  font-size: clamp(2.6rem, 5.5vw, 4rem);
+  letter-spacing: .06em;
+  margin-bottom: 6px;
+}
+.hero-title-sub {
+  /* 副句 — 稍小，呼應主標但不搶風頭 */
+  display: block;
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  font-weight: 400;
+  color: var(--warm-mid);
+  letter-spacing: .02em;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+/* 分隔線 */
+.hero-rule {
+  width: 48px; height: 2px;
+  background: var(--gold);
+  margin: 28px 0;
+  border: none;
+}
+/* 副標說明文字 */
+.hero-desc {
+  font-size: clamp(.95rem, 1.3vw, 1.05rem);
+  color: var(--warm-mid);
+  line-height: 2;
+  max-width: 420px;
+  margin-bottom: 36px;
+}
+/* 按鈕群 */
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+/* 底部三欄亮點 */
+.hero-highlights {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.hero-hi-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-right: 20px;
+  /* 中間那欄左右加分隔線 */
+}
+.hero-hi-item:not(:last-child) {
+  border-right: 1px solid var(--border);
+  margin-right: 20px;
+}
+.hero-hi-icon {
+  width: 38px; height: 38px;
+  background: rgba(200,149,108,.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.hero-hi-text .hi-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 4px;
+}
+.hero-hi-text .hi-desc {
+  font-size: .8rem;
+  color: var(--warm-mid);
+  line-height: 1.65;
+}
+/* hi-divider 已不需要，隱藏 */
+.hero-hi-divider { display: none; }
 
-/* ── SAVE BAR ── */
-.save-bar{
-  background:#1E0E14;padding:7px 24px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  flex-wrap:wrap;position:relative;z-index:200;
+/* Hero right — collage */
+.hero-right {
+  position: relative;
+  overflow: hidden;
 }
-.save-bar>span{font-size:11.5px;color:rgba(255,255,255,.4);white-space:nowrap;}
-.sb-mid{display:flex;align-items:center;gap:8px;flex:1;min-width:0;}
-.sb-select{font-size:12px;padding:4px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.2);background:#3A1020;color:#fff;font-family:'DM Sans',sans-serif;cursor:pointer;}
-.sb-input{flex:1;min-width:0;font-size:12px;padding:4px 10px;border-radius:5px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-family:'DM Sans',sans-serif;outline:none;}
-.sb-apply{font-size:12px;padding:5px 14px;border-radius:5px;background:rgba(255,255,255,.15);color:#fff;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
-.save-btn{font-size:12.5px;font-weight:500;background:var(--rose);color:#fff;border:none;border-radius:6px;padding:6px 18px;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
-.save-confirm{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(50px);background:#1E0E14;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;}
-.save-confirm.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-/* ── NAV ── */
-nav{
-  background:rgba(255,255,255,.88);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  padding:0 44px;height:66px;
-  display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:100;border-bottom:1px solid #F5E8EC;
-  transition:box-shadow .4s;
+.hero-collage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: 6px;
+  padding: 6px;
 }
-nav.scrolled{box-shadow:0 4px 32px rgba(194,86,104,.1);}
-.nav-logo{display:flex;align-items:center;gap:11px;}
-.nav-logo-box{
-  width:38px;height:38px;background:var(--rose);border-radius:9px;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+.collage-img {
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ivory);
 }
-.nav-logo-box:hover{transform:rotate(-10deg) scale(1.12);}
-.nav-logo-box svg{width:20px;height:20px;}
-.nav-logo-texts{display:flex;align-items:center;gap:14px;}
-.nav-logo-name{font-family:'Noto Serif TC',serif;font-size:18px;font-weight:600;color:var(--rose);}
-.nav-logo-sub{font-size:12px;color:var(--muted);}
-.nav-center{display:flex;gap:2px;list-style:none;}
-.nav-center li a{
-  font-size:14px;color:#6E4E58;padding:6px 18px;display:block;
-  transition:color .2s;position:relative;overflow:hidden;
+.collage-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
 }
-.nav-center li a::before{
-  content:'';position:absolute;bottom:0;left:50%;
-  width:0;height:2px;background:var(--rose);border-radius:2px;
-  transition:width .3s ease,left .3s ease;
-}
-.nav-center li a:hover{color:var(--rose);}
-.nav-center li a:hover::before{width:60%;left:20%;}
-.nav-center li.active a{color:var(--rose);font-weight:500;}
-.nav-center li.active a::before{width:60%;left:20%;}
-
-/* ── HERO ── */
-.hero{
-  position:relative;width:100%;overflow:hidden;
-  line-height:0;
-}
-.hero-img{
-  width:100%;display:block;max-height:100vh;object-fit:cover;
-  transform:scale(1.06);
-  transition:transform 1.6s cubic-bezier(.25,.46,.45,.94);
-  will-change:transform;
-}
-.hero.loaded .hero-img{transform:scale(1);}
-
-/* 視差覆蓋層 */
-.hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,
-    transparent 50%,
-    rgba(194,86,104,.06) 80%,
-    rgba(251,240,242,.4) 100%);
-  pointer-events:none;
-}
-
-/* ── 浮動粒子 Canvas ── */
-#particles{
-  position:absolute;inset:0;
-  pointer-events:none;z-index:1;
-  opacity:.7;
-}
-
-/* ── FEATURE THUMBNAILS ── */
-.feat-section{background:#fff;padding:24px 32px 40px;}
-.feat-grid{
-  max-width:100%;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
-}
-.feat-card{
-  border-radius:16px;overflow:hidden;
-  cursor:pointer;position:relative;display:block;
-  box-shadow:0 4px 20px rgba(194,86,104,.06);
-  transition:transform .5s cubic-bezier(.25,.46,.45,.94),box-shadow .5s ease;
-}
-/* 光暈效果 */
-.feat-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),
-    rgba(194,86,104,.22) 0%,transparent 65%);
-  opacity:0;transition:opacity .3s;z-index:1;border-radius:16px;
-  pointer-events:none;
-}
-.feat-card:hover::before{opacity:1;}
-.feat-card::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(194,86,104,.25),transparent 50%);
-  opacity:0;transition:opacity .4s;border-radius:16px;
-  pointer-events:none;z-index:1;
-}
-.feat-card:hover{
-  transform:translateY(-8px) scale(1.01);
-  box-shadow:0 24px 48px rgba(194,86,104,.2);
-}
-.feat-card:hover::after{opacity:1;}
-.feat-card img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  transition:transform .7s cubic-bezier(.25,.46,.45,.94);
-}
-.feat-card:hover img{transform:scale(1.08);}
-
-/* ── WHY US ── */
-.why-section{background:#fff;padding:64px 16px;}
-.why-inner{max-width:1600px;margin:0 auto;}
-.section-eyebrow{
-  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--rose);font-weight:500;margin-bottom:10px;
-  display:inline-block;
-  position:relative;
-}
-.section-eyebrow::after{
-  content:'';position:absolute;bottom:-3px;left:0;
-  width:0;height:1px;background:var(--rose);
-  transition:width .6s ease .2s;
-}
-.section-eyebrow.visible::after{width:100%;}
-.section-title{
-  font-family:'Noto Serif TC',serif;font-size:30px;font-weight:400;
-  color:var(--ink);margin-bottom:40px;
-}
-.why-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:24px;align-items:start;
-}
-.why-card{
-  border-radius:18px;overflow:hidden;background:#fff;
-  border:1px solid #F2DFE4;
-  box-shadow:0 12px 32px rgba(194,86,104,.07);
-  line-height:0;cursor:pointer;
-  transition:transform .5s cubic-bezier(.25,.46,.45,.94),
-             box-shadow .5s ease,border-color .3s;
-  position:relative;
-}
-.why-card::after{
-  content:'';position:absolute;inset:0;
-  box-shadow:inset 0 0 0 2px rgba(194,86,104,0);
-  border-radius:18px;transition:box-shadow .3s;pointer-events:none;
-}
-.why-card:hover{
-  transform:translateY(-6px) rotate(.3deg);
-  box-shadow:0 24px 56px rgba(194,86,104,.16);
-  border-color:var(--rose-md);
-}
-.why-card:hover::after{box-shadow:inset 0 0 0 2px rgba(194,86,104,.2);}
-.why-card img{
-  width:100%;height:auto;display:block;
-  transition:transform .7s cubic-bezier(.25,.46,.45,.94),filter .4s;
-}
-.why-card:hover img{transform:scale(1.05);filter:brightness(1.04);}
-
-/* ── STATS ── */
-.stats-section{
-  background:var(--rose-lt);padding:72px 48px;
-  position:relative;overflow:hidden;
-}
-.stats-section::before{
-  content:'';position:absolute;
-  width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(194,86,104,.08),transparent 70%);
-  top:-200px;right:-200px;pointer-events:none;
-}
-.stats-inner{max-width:960px;margin:0 auto;position:relative;}
-.stats-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:40px;}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.stat-card{
-  background:#fff;border-radius:12px;padding:24px 20px;
-  text-align:center;border:1px solid var(--border);
-  transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;
-  cursor:default;
-}
-.stat-card:hover{
-  transform:translateY(-6px) scale(1.03);
-  box-shadow:0 16px 40px rgba(194,86,104,.14);
-}
-.stat-num{
-  font-family:'Noto Serif TC',serif;font-size:28px;font-weight:600;
-  color:var(--rose);margin-bottom:4px;
-  display:block;
-}
-.stat-label{font-size:12.5px;color:var(--muted);}
-
-/* ── SCROLL REVEAL ── */
-.reveal{
-  opacity:0;transform:translateY(36px);
-  transition:opacity .75s cubic-bezier(.25,.46,.45,.94),
-             transform .75s cubic-bezier(.25,.46,.45,.94);
-}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .75s ease,transform .75s ease;}
-.reveal-left.visible{opacity:1;transform:translateX(0);}
-.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
-.d4{transition-delay:.32s;}.d5{transition-delay:.40s;}.d6{transition-delay:.48s;}
-
-/* ── EDITABLE ── */
-[contenteditable]{outline:none;border-radius:3px;transition:box-shadow .15s;cursor:text;}
-[contenteditable]:hover{box-shadow:0 0 0 2px rgba(194,86,104,.22);}
-[contenteditable]:focus{box-shadow:0 0 0 2px rgba(194,86,104,.5);background:rgba(194,86,104,.04);}
-
-/* ── TOAST ── */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--rose);color:#fff;padding:11px 26px;border-radius:9px;font-size:13.5px;font-weight:500;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-/* ── CURSOR GLOW ── */
-.cursor-glow{
-  position:fixed;width:320px;height:320px;border-radius:50%;
-  background:radial-gradient(circle,rgba(194,86,104,.07),transparent 70%);
-  pointer-events:none;z-index:0;
-  transform:translate(-50%,-50%);
-  transition:transform .08s linear;
-  will-change:transform;
+.collage-img:hover img { transform: scale(1.05); }
+.ci-1 { grid-column: 1/8; grid-row: 1/6; }
+.ci-2 { grid-column: 8/13; grid-row: 1/5; }
+.ci-3 { grid-column: 1/5; grid-row: 6/10; }
+.ci-4 { grid-column: 5/9; grid-row: 5/8; }
+.ci-5 { grid-column: 9/13; grid-row: 5/9; }
+.ci-6 { grid-column: 1/5; grid-row: 10/13; }
+.ci-7 { grid-column: 5/9; grid-row: 8/13; }
+.ci-8 { grid-column: 9/13; grid-row: 9/13; }
+.collage-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--cream) 0%, transparent 18%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  nav{padding:0 20px;}
-  .nav-center{display:none;}
-  .nav-logo-sub{display:none;}
-  .feat-section{padding:16px;}
-  .why-section{padding:40px 16px;}
-  .stats-section{padding:48px 20px;}
-  .why-grid{grid-template-columns:repeat(2,1fr);}
-  .cursor-glow{display:none;}
+/* ── Photo Wall Section ── */
+.photowall-section { background: var(--ivory); }
+.photowall-section .section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-@media(max-width:600px){
-  .save-bar{padding:8px 12px;gap:8px;}
-  .sb-mid{flex-wrap:wrap;}
-  .feat-grid{grid-template-columns:1fr;}
-  .why-grid{grid-template-columns:1fr;}
-  .stats-grid{grid-template-columns:repeat(2,1fr);}
-  .section-title{font-size:22px;}
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.filter-tab {
+  padding: 9px 20px;
+  border-radius: 24px;
+  border: 1.5px solid var(--border);
+  background: white;
+  font-family: 'Noto Serif TC', serif;
+  font-size: var(--fs-sm);
+  color: var(--warm-mid);
+  cursor: pointer;
+  transition: all .25s;
+  min-height: 44px;
+}
+.filter-tab:hover, .filter-tab.active {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: white;
+}
+/* Masonry grid */
+.photo-grid { columns: 4; column-gap: 14px; }
+.photo-item {
+  break-inside: avoid;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background: var(--ivory);
+}
+.photo-item img {
+  width: 100%;
+  display: block;
+  transition: transform .5s ease;
+  /* 限制最大高度，避免直式圖片過高破壞瀑布流平衡 */
+  max-height: 420px;
+  object-fit: cover;
+}
+.photo-item:hover img { transform: scale(1.04); }
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(61,35,20,.85) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity .35s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+}
+.photo-item:hover .photo-overlay { opacity: 1; }
+.photo-overlay .photo-cat {
+  font-family: 'Noto Serif TC', serif;
+  font-size: .72rem;
+  color: var(--gold);
+  margin-bottom: 5px;
+}
+.photo-overlay .photo-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: .9rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.45;
+}
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0;
+  background: rgba(30,18,10,.93);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.lightbox.open { display: flex; }
+.lightbox-inner {
+  position: relative;
+  max-width: 900px;
+  max-height: 85vh;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,.6);
+}
+.lightbox-inner img { max-height: 80vh; width: auto; display: block; }
+.lightbox-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px 24px;
+  background: linear-gradient(transparent, rgba(30,18,10,.9));
+  color: white;
+}
+.lightbox-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 44px; height: 44px;
+  background: rgba(0,0,0,.5);
+  border: none; border-radius: 50%;
+  color: white; font-size: 1.2rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.lightbox-close:hover { background: var(--gold); }
+
+/* ── We Value ── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.why-card {
+  padding: 36px 28px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s;
+  position: relative;
+  overflow: hidden;
+}
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--gold), var(--rust));
+  transform: scaleX(0);
+  transition: transform .35s;
+  transform-origin: left;
+}
+.why-card:hover::before { transform: scaleX(1); }
+.why-card:hover { transform: translateY(-5px); }
+.why-icon {
+  width: 52px; height: 52px;
+  border-radius: 10px;
+  background: rgba(200,149,108,.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+}
+.why-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 12px;
+}
+.why-text {
+  font-size: var(--fs-sm);
+  color: var(--warm-mid);
+  line-height: 1.9;
+}
+
+/* ── Featured Courses ── */
+.courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.course-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s;
+}
+.course-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-md); }
+.course-img { aspect-ratio: 16/10; overflow: hidden; background: var(--ivory); }
+.course-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.course-card:hover .course-img img { transform: scale(1.06); }
+.course-body { padding: 24px; }
+.course-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.course-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+.course-desc {
+  font-size: var(--fs-sm);
+  color: var(--warm-mid);
+  line-height: 1.85;
+  margin-bottom: 20px;
+}
+.course-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.course-info { font-size: var(--fs-xs); color: var(--warm-mid); }
+
+/* ── We Are Doing ── */
+.doing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.doing-card {
+  background: white;
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: transform .3s;
+}
+.doing-card:hover { transform: translateY(-4px); }
+.doing-num {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(200,149,108,.3);
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 4px;
+}
+.doing-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 8px;
+}
+.doing-text { font-size: var(--fs-sm); color: var(--warm-mid); line-height: 1.85; }
+
+/* ── Testimonials ── */
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.testimonial-card {
+  background: white;
+  padding: 36px 28px;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.testimonial-card::before {
+  content: '「';
+  position: absolute;
+  top: 20px; right: 24px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 3.5rem;
+  color: rgba(200,149,108,.2);
+  line-height: 1;
+}
+.testimonial-text {
+  font-size: var(--fs-md);
+  color: var(--charcoal);
+  line-height: 1.95;
+  margin-bottom: 24px;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.testimonial-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--ivory);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(200,149,108,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+.testimonial-name {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--bark);
+}
+.testimonial-role { font-size: var(--fs-xs); color: var(--gold); margin-top: 2px; }
+
+/* ── CTA ── */
+.cta-banner { background: var(--ivory); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.cta-text h2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--bark);
+  margin-bottom: 8px;
+}
+.cta-text p { color: var(--warm-mid); font-size: var(--fs-lg); line-height: 1.8; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; min-height: unset; }
+  .hero-right { display: none; }
+  .hero-left { padding: 72px 28px 60px; }
+  .hero-highlights { grid-template-columns: repeat(3, 1fr); }
+  .photo-grid { columns: 3; }
+  .why-grid, .courses-grid, .testimonial-grid { grid-template-columns: 1fr 1fr; }
+  .doing-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .photo-grid { columns: 2; }
+  .why-grid, .courses-grid, .testimonial-grid { grid-template-columns: 1fr; }
+  .hero-highlights { grid-template-columns: 1fr; gap: 16px; }
+  .hero-hi-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-right: 0; margin-bottom: 16px; }
 }
 </style>
 </head>
 <body>
 
-<!-- 滑鼠光暈 -->
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<!-- SAVE BAR -->
-<div class="save-bar" role="toolbar" aria-label="編輯工具列">
-  <span>✏️ 點擊文字可編輯</span>
-  <div class="sb-mid">
-    <select class="sb-select" id="imgTarget" aria-label="選擇要更換的圖片">
-      <option value="0" style="background:#3A1020;">多元課程 縮圖</option>
-      <option value="1" style="background:#3A1020;">公益參與 縮圖</option>
-      <option value="2" style="background:#3A1020;">溫暖同行 縮圖</option>
-    </select>
-    <input class="sb-input" id="imgUrlInput" type="url" inputmode="url"
-      placeholder="貼上圖片網址 例：https://example.com/image.jpg" aria-label="圖片網址">
-    <button class="sb-apply" onclick="applyImgUrl()">套用</button>
+<!-- ══ Navigation ══ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-cn">共學與你</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">首頁</a></li>
+      <li><a href="about.html">關於我們</a></li>
+      <li><a href="courses.html">課程總覽</a></li>
+      <li><a href="gallery.html">公益花絮</a></li>
+      <li><a href="contact.html" class="nav-cta">聯絡我們</a></li>
+    </ul>
+    <button class="hamburger" aria-label="選單">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <button class="save-btn" onclick="saveHTML()">⬇ 儲存網頁</button>
-</div>
-<div class="save-confirm" id="saveConfirm" role="status" aria-live="polite">✅ 已下載，照片已一併儲存</div>
-
-<!-- NAV -->
-<nav aria-label="主選單">
-  <div class="nav-logo">
-    <div class="nav-logo-box" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M12 21C12 21 4 14.5 4 8.5C4 5.5 6 4 8 4C9.8 4 11.2 5 12 6.5C12.8 5 14.2 4 16 4C18 4 20 5.5 20 8.5C20 14.5 12 21 12 21Z" fill="#fff"/>
-        <path d="M9 9h6M9 11.5h6" stroke="#C25668" stroke-width="1.2" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="nav-logo-texts">
-      <span class="nav-logo-name" contenteditable="true">共學與你</span>
-      <span class="nav-logo-sub" contenteditable="true">一起學習，一起把溫暖傳出去</span>
-    </div>
-  </div>
-  <ul class="nav-center">
-    <li class="active"><a href="index.html">首頁</a></li>
-    <li><a href="courses.html">課程總覽</a></li>
-    <li><a href="charity.html">公益參與</a></li>
-    <li><a href="about.html">關於我們</a></li>
-    <li><a href="contact.html">聯絡我們</a></li>
-  </ul>
+</nav>
+<nav class="mobile-menu">
+  <a href="index.html">首頁</a>
+  <a href="about.html">關於我們</a>
+  <a href="courses.html">課程總覽</a>
+  <a href="gallery.html">公益花絮</a>
+  <a href="contact.html">聯絡我們</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero" aria-label="主視覺區塊">
-  <canvas id="particles"></canvas>
-  <img id="heroBgImg"
-    src="https://qqp888168.github.io/plana/images/007.jpg"
-    alt="共學與你 — 一起學習，一起把溫暖傳出去"
-    class="hero-img" loading="eager">
-  <div class="hero-overlay"></div>
-</section>
-
-<!-- FEATURE CARDS -->
-<section class="feat-section" aria-label="精選項目">
-  <div class="feat-grid">
-    <a href="courses.html" class="feat-card reveal d1" aria-label="多元課程">
-      <img id="thumbImg0" src="https://qqp888168.github.io/plana/images/008.jpg" alt="多元課程" loading="lazy">
-    </a>
-    <a href="charity.html" class="feat-card reveal d2" aria-label="公益參與">
-      <img id="thumbImg1" src="https://qqp888168.github.io/plana/images/009.jpg" alt="公益參與" loading="lazy">
-    </a>
-    <a href="about.html" class="feat-card reveal d3" aria-label="溫暖同行">
-      <img id="thumbImg2" src="https://qqp888168.github.io/plana/images/010.jpg" alt="溫暖同行" loading="lazy">
-    </a>
+<!-- ══ Hero ══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="line"></span>
+      <span class="label">熟齡課程社群</span>
+    </div>
+    <h1 class="hero-title" aria-label="共學與你｜熟齡學習與公益陪伴社群">
+      <span class="hero-title-main">共學與你</span>
+      <span class="hero-title-sub">讓學習成為生活的一部分</span>
+    </h1>
+    <hr class="hero-rule">
+    <p class="hero-desc">
+      陪伴熟齡朋友一起參與課程、認識新朋友、分享生活，讓每一次相聚都成為值得期待的事。
+    </p>
+    <div class="hero-actions">
+      <a href="courses.html" class="btn btn-primary">查看近期課程</a>
+      <a href="contact.html" class="btn btn-outline">加入 LINE 詢問</a>
+    </div>
+    <div class="hero-highlights">
+      <div class="hero-hi-item">
+        <div class="hero-hi-icon">📚</div>
+        <div class="hero-hi-text">
+          <div class="hi-name">課程整理</div>
+          <div class="hi-desc">整理各地適合熟齡朋友的課程</div>
+        </div>
+      </div>
+      <div class="hero-hi-divider"></div>
+      <div class="hero-hi-item">
+        <div class="hero-hi-icon">📷</div>
+        <div class="hero-hi-text">
+          <div class="hi-name">公益花絮</div>
+          <div class="hi-desc">記錄每次公益參與的真實片段</div>
+        </div>
+      </div>
+      <div class="hero-hi-divider"></div>
+      <div class="hero-hi-item">
+        <div class="hero-hi-icon">🤝</div>
+        <div class="hero-hi-text">
+          <div class="hi-name">公益陪伴</div>
+          <div class="hi-desc">一起把學習延伸成對社會的回饋</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-collage">
+      <div class="collage-img ci-1">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A25.jpg" alt="共學與你課程花絮">
+      </div>
+      <div class="collage-img ci-2">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A2.jpg" alt="熟齡朋友活動花絮">
+      </div>
+      <div class="collage-img ci-3">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A3.jpg" alt="共學與你公益活動紀錄">
+      </div>
+      <div class="collage-img ci-4">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A4.jpg" alt="熟齡課程現場花絮">
+      </div>
+      <div class="collage-img ci-5">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A5.jpg" alt="熟齡朋友手作體驗課程">
+      </div>
+      <div class="collage-img ci-6">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A6.jpg" alt="熟齡朋友課後學員互動">
+      </div>
+      <div class="collage-img ci-7">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A7.jpg" alt="共學與你活動合照">
+      </div>
+      <div class="collage-img ci-8">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A8.jpg" alt="熟齡朋友生活學習課程">
+      </div>
+    </div>
+    <div class="collage-overlay"></div>
   </div>
 </section>
 
-<!-- 為什麼選擇我們 -->
-<section class="why-section" aria-labelledby="why-title">
-  <div class="why-inner">
-    <div class="section-eyebrow reveal" contenteditable="true">為什麼選擇我們</div>
-    <div class="section-title reveal d1" id="why-title" contenteditable="true">學習有意義，行動有溫度</div>
+<!-- ══ Photo Wall ══ -->
+<section class="photowall-section section" id="photowall">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="label">課程花絮與活動紀錄</span>
+        <div class="divider"></div>
+        <h2 class="section-heading">課程花絮與公益活動紀錄</h2>
+        <p class="section-sub">這裡記錄大家一起上課、手作、交流與參與公益的片段，每一次相聚，都是生活裡很珍貴的回憶。</p>
+      </div>
+      <a href="gallery.html" class="btn btn-outline">查看更多 →</a>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">全部</button>
+      <button class="filter-tab" data-filter="course">課程花絮</button>
+      <button class="filter-tab" data-filter="charity">公益紀錄</button>
+      <button class="filter-tab" data-filter="interaction">交流互動</button>
+      <button class="filter-tab" data-filter="work">學員作品</button>
+    </div>
+
+    <div class="photo-grid" id="photoGrid">
+      <div class="photo-item reveal" data-cat="course" data-title="手作課程花絮">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A9.jpg" alt="課程花絮" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">課程花絮</span>
+          <span class="photo-title">手作課程花絮</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-1" data-cat="interaction" data-title="課後交流時光">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A10.jpg" alt="熟齡朋友課後交流時光" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">交流互動</span>
+          <span class="photo-title">課後交流時光</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-2" data-cat="work" data-title="學員作品分享">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A11.jpg" alt="熟齡學員手作作品分享" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">學員作品</span>
+          <span class="photo-title">學員作品分享</span>
+        </div>
+      </div>
+      <div class="photo-item reveal" data-cat="charity" data-title="公益陪伴紀錄">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A12.jpg" alt="共學與你公益活動志工紀錄" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">公益紀錄</span>
+          <span class="photo-title">公益陪伴紀錄</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-1" data-cat="course" data-title="熟齡課程現場">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A13.jpg" alt="熟齡朋友參與課程現場" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">課程花絮</span>
+          <span class="photo-title">熟齡課程現場</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-2" data-cat="work" data-title="學員作品分享">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A14.jpg" alt="學員作品" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">學員作品</span>
+          <span class="photo-title">學員作品分享</span>
+        </div>
+      </div>
+      <div class="photo-item reveal" data-cat="interaction" data-title="活動合照">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A15.jpg" alt="共學與你活動合照紀錄" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">交流互動</span>
+          <span class="photo-title">活動合照</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-1" data-cat="charity" data-title="志工活動紀錄">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A16.jpg" alt="志工活動紀錄" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">公益紀錄</span>
+          <span class="photo-title">志工活動紀錄</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-2" data-cat="course" data-title="生活學習紀錄">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A17.jpg" alt="生活學習紀錄" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">課程花絮</span>
+          <span class="photo-title">生活學習紀錄</span>
+        </div>
+      </div>
+      <div class="photo-item reveal" data-cat="work" data-title="學員作品分享">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A18.jpg" alt="學員作品" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">學員作品</span>
+          <span class="photo-title">學員作品分享</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-1" data-cat="interaction" data-title="課後交流時光">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A19.jpg" alt="課後交流" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">交流互動</span>
+          <span class="photo-title">課後交流時光</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-2" data-cat="charity" data-title="公益陪伴紀錄">
+        <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A21.jpg" alt="公益陪伴紀錄" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">公益紀錄</span>
+          <span class="photo-title">公益陪伴紀錄</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption">
+      <span class="photo-cat" id="lightboxCat"></span>
+      <div id="lightboxTitle" style="color:white;font-size:1rem;font-family:'Noto Serif TC',serif;margin-top:4px;"></div>
+    </div>
+  </div>
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+</div>
+
+<!-- ══ We Value ══ -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-heading">我們重視的事</h2>
+      <div class="divider"></div>
+      <p class="section-sub">不只是整理課程，也希望讓每位朋友都感覺有人一起走。</p>
+    </div>
     <div class="why-grid">
-      <div class="why-card reveal d1"><img src="https://qqp888168.github.io/plana/images/011.jpg" alt="專業課程內容" loading="lazy"></div>
-      <div class="why-card reveal d2"><img src="https://qqp888168.github.io/plana/images/012.jpg" alt="學習化為公益" loading="lazy"></div>
-      <div class="why-card reveal d3"><img src="https://qqp888168.github.io/plana/images/013.jpg" alt="彈性學習時程" loading="lazy"></div>
-      <div class="why-card reveal d4"><img src="https://qqp888168.github.io/plana/images/014.jpg" alt="社群共學氛圍" loading="lazy"></div>
-      <div class="why-card reveal d5"><img src="https://qqp888168.github.io/plana/images/015.jpg" alt="貼心推薦協助" loading="lazy"></div>
-      <div class="why-card reveal d6"><img src="https://qqp888168.github.io/plana/images/016.jpg" alt="安全學習環境" loading="lazy"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 累積影響力 -->
-<section class="stats-section" aria-labelledby="stats-title">
-  <div class="stats-inner">
-    <div class="section-eyebrow reveal" contenteditable="true">累積影響力</div>
-    <div class="section-title reveal d1" id="stats-title" contenteditable="true">每一位學員，都在改變世界</div>
-    <div class="stats-desc reveal d2" contenteditable="true">從 2020 年創立至今，我們共同創造了這些真實的影響。</div>
-    <div class="stats-grid">
-      <div class="stat-card reveal d1">
-        <span class="stat-num" data-target="2140" contenteditable="true">2,140</span>
-        <div class="stat-label" contenteditable="true">偏鄉孩童受益</div>
+      <div class="why-card reveal">
+        <div class="why-icon">🌱</div>
+        <div class="why-title">課程簡單好參與</div>
+        <p class="why-text">不需要有基礎，只要有興趣，都可以跟著老師慢慢學。我們整理的課程都以輕鬆體驗為主。</p>
       </div>
-      <div class="stat-card reveal d2">
-        <span class="stat-num" data-target="38" contenteditable="true">38</span>
-        <div class="stat-label" contenteditable="true">間偏鄉教室修繕</div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">有人陪伴比較安心</div>
+        <p class="why-text">從課程資訊、報名提醒到活動紀錄，我們希望讓每位朋友都感覺有人一起走，不用自己摸索。</p>
       </div>
-      <div class="stat-card reveal d3">
-        <span class="stat-num" data-target="560" contenteditable="true">560</span>
-        <div class="stat-label" contenteditable="true">弱勢家庭受助</div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">💛</div>
+        <div class="why-title">學習也能認識朋友</div>
+        <p class="why-text">來上課不只是學東西，也能和同樣喜歡生活、喜歡交流的人互動，讓生活多一點連結。</p>
       </div>
-      <div class="stat-card reveal d4">
-        <span class="stat-num" data-target="12" contenteditable="true">12</span>
-        <div class="stat-label" contenteditable="true">個縣市服務範圍</div>
+      <div class="why-card reveal">
+        <div class="why-icon">❤️</div>
+        <div class="why-title">公益不是口號</div>
+        <p class="why-text">有機會時，我們也會一起參與公益活動，把學習延伸成對社會的小小回饋。</p>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">📋</div>
+        <div class="why-title">資訊清楚不複雜</div>
+        <p class="why-text">課程時間、地點、費用與注意事項都盡量整理清楚，讓大家看得懂、好操作。</p>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">👓</div>
+        <div class="why-title">適合熟齡族群閱讀</div>
+        <p class="why-text">網站文字、課程說明與報名流程，都以清楚、簡單、好理解為主，不用擔心看不懂。</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- ══ Featured Courses ══ -->
+<section class="section" style="background:var(--ivory);">
+  <div class="container">
+    <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+      <div>
+        <span class="label">近期課程</span>
+        <div class="divider"></div>
+        <h2 class="section-heading">近期熟齡課程</h2>
+        <p class="section-sub">以下為範例課程類型，實際開課內容請以社群公告為準。</p>
+      </div>
+      <a href="courses.html" class="btn btn-outline">全部課程 →</a>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card reveal">
+        <div class="course-img">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A22.jpg" alt="手作體驗課">
+        </div>
+        <div class="course-body">
+          <div class="course-meta"><span class="badge badge-gold">手作體驗</span></div>
+          <div class="course-name">手作體驗課程</div>
+          <p class="course-desc">適合對手作有興趣的朋友，從基礎開始，跟著老師慢慢做，不用有任何基礎。</p>
+          <div class="course-footer">
+            <div class="course-info">時間與地點依公告為準</div>
+            <a href="courses.html" class="btn btn-ghost">了解更多</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card reveal reveal-delay-1">
+        <div class="course-img">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A23.jpg" alt="生活學習課程">
+        </div>
+        <div class="course-body">
+          <div class="course-meta"><span class="badge badge-sage">生活學習</span></div>
+          <div class="course-name">生活學習課程</div>
+          <p class="course-desc">和志同道合的朋友一起學習生活中用得到的技能，輕鬆參與，沒有壓力。</p>
+          <div class="course-footer">
+            <div class="course-info">時間與地點依公告為準</div>
+            <a href="courses.html" class="btn btn-ghost">了解更多</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card reveal reveal-delay-2">
+        <div class="course-img">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/A24.jpg" alt="健康活動">
+        </div>
+        <div class="course-body">
+          <div class="course-meta"><span class="badge badge-rust">健康活動</span></div>
+          <div class="course-name">健康活動課程</div>
+          <p class="course-desc">適合各年齡層的健康相關課程或活動，以舒緩、體驗為主，讓身體也跟著放鬆一下。</p>
+          <div class="course-footer">
+            <div class="course-info">時間與地點依公告為準</div>
+            <a href="courses.html" class="btn btn-ghost">了解更多</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══ We Are Doing ══ -->
+<section class="section" style="background:linear-gradient(135deg, var(--bark) 0%, #5C3520 100%);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;pointer-events:none;user-select:none;display:flex;align-items:center;justify-content:flex-end;padding-right:4%;">
+    <span style="font-family:'Noto Serif TC',serif;font-size:18vw;font-weight:700;color:rgba(255,255,255,.03);line-height:1;">共學</span>
+  </div>
+  <div class="container" style="position:relative;">
+    <div class="section-header text-center" style="margin-bottom:48px;">
+      <h2 class="section-heading" style="color:white;">我們持續在做的事</h2>
+      <div class="divider" style="background:var(--gold);margin-inline:auto;"></div>
+      <p class="section-sub" style="color:rgba(255,255,255,.7);margin-inline:auto;">不是大計畫，而是一件一件認真去做的小事。</p>
+    </div>
+    <div class="doing-grid">
+      <div class="doing-card reveal">
+        <div class="doing-num">01</div>
+        <div>
+          <div class="doing-title">整理各地課程資訊</div>
+          <p class="doing-text">把分散在各處的熟齡課程資訊整理起來，讓大家可以更輕鬆地找到想參與的內容。</p>
+        </div>
+      </div>
+      <div class="doing-card reveal reveal-delay-1">
+        <div class="doing-num">02</div>
+        <div>
+          <div class="doing-title">分享真實活動花絮</div>
+          <p class="doing-text">把每次課程與活動的照片和紀錄整理起來，讓沒參與到的朋友也能感受現場的溫度。</p>
+        </div>
+      </div>
+      <div class="doing-card reveal reveal-delay-2">
+        <div class="doing-num">03</div>
+        <div>
+          <div class="doing-title">陪伴群友參與學習</div>
+          <p class="doing-text">協助對課程有興趣但不確定怎麼開始的朋友，了解報名方式、課程內容與參與流程。</p>
+        </div>
+      </div>
+      <div class="doing-card reveal reveal-delay-3">
+        <div class="doing-num">04</div>
+        <div>
+          <div class="doing-title">持續安排公益行動</div>
+          <p class="doing-text">在課程之外，也會不定期安排公益參與的機會，讓學習不只是個人的事，也能成為回饋社會的力量。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Testimonials ══ -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="label">群友分享</span>
+      <div class="divider"></div>
+      <h2 class="section-heading">群友分享</h2>
+      <p class="section-sub">來自真實參與者的感受，不加修飾。</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">原本只是想找一堂課試試看，沒想到上完之後覺得很放鬆，也認識了幾位可以聊天的朋友。</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🙂</div>
+          <div>
+            <div class="testimonial-name">課程參與者</div>
+            <div class="testimonial-role">手作體驗班</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <p class="testimonial-text">對熟齡朋友來說，有人把課程資訊整理好，真的會比較安心，也比較敢踏出第一步。</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">😊</div>
+          <div>
+            <div class="testimonial-name">群友分享</div>
+            <div class="testimonial-role">第一次參加課程</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <p class="testimonial-text">參與公益活動後才發現，陪伴不是做很多大事，而是願意花時間和對方一起完成一件小事。</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🌿</div>
+          <div>
+            <div class="testimonial-name">公益活動志工</div>
+            <div class="testimonial-role">長期參與者</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="section cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text reveal">
+        <h2>想看看近期有哪些課程嗎？</h2>
+        <p>可以先從有興趣的課程開始了解，不用急著決定，慢慢看、慢慢問就好。</p>
+      </div>
+      <div class="reveal reveal-delay-1" style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="courses.html" class="btn btn-primary">查看近期課程</a>
+        <a href="contact.html" class="btn btn-outline">LINE 詢問</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Footer ══ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-cn">共學與你</span>
+        <p>共學與你是一個整理熟齡課程、活動花絮與公益陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速連結</h4>
+        <a href="index.html">首頁</a>
+        <a href="about.html">關於我們</a>
+        <a href="courses.html">課程總覽</a>
+        <a href="gallery.html">公益花絮</a>
+        <a href="contact.html">聯絡我們</a>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>聯絡資訊</h4>
+        <p><span>💬</span><span>LINE：<a href="https://line.me/ti/p/v8M9_69-YB" target="_blank" style="color:rgba(255,255,255,.65);">加入好友</a></span></p>
+        <p><span>✉️</span><span>Email：<a href="mailto:joyfullearn@outlook.com" style="color:rgba(255,255,255,.65);">joyfullearn@outlook.com</a></span></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 共學與你｜版權所有</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=61590609484380" target="_blank" aria-label="Facebook">f</a>
+        <a href="#" aria-label="LINE" style="font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:600;">LINE</a>
+        <a href="#" aria-label="Instagram">◎</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
 <script>
-/* ── 滑鼠光暈 ── */
-const glow = document.getElementById('cursorGlow');
-document.addEventListener('mousemove', e => {
-  glow.style.left = e.clientX + 'px';
-  glow.style.top  = e.clientY + 'px';
-}, { passive: true });
-
-/* ── Nav 滾動 ── */
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 10);
-}, { passive: true });
-
-/* ── Hero 載入動畫 ── */
-const heroImg = document.getElementById('heroBgImg');
-const heroSection = heroImg.closest('.hero');
-if (heroImg.complete) heroSection.classList.add('loaded');
-else heroImg.addEventListener('load', () => heroSection.classList.add('loaded'));
-
-/* ── 視差滾動 ── */
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  heroImg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
-}, { passive: true });
-
-/* ── 粒子動畫 ── */
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-let particles = [];
-
-function resizeCanvas() {
-  canvas.width  = heroSection.offsetWidth;
-  canvas.height = heroSection.offsetHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-class Particle {
-  constructor() { this.reset(); }
-  reset() {
-    this.x  = Math.random() * canvas.width;
-    this.y  = Math.random() * canvas.height;
-    this.r  = Math.random() * 3 + 1;
-    this.vx = (Math.random() - .5) * .4;
-    this.vy = (Math.random() - .5) * .4 - .2;
-    this.alpha = Math.random() * .5 + .15;
-    this.life  = 0;
-    this.maxLife = Math.random() * 200 + 100;
-  }
-  draw() {
-    const progress = this.life / this.maxLife;
-    const a = this.alpha * Math.sin(progress * Math.PI);
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(194,86,104,${a})`;
-    ctx.fill();
-  }
-  update() {
-    this.x += this.vx; this.y += this.vy;
-    this.life++;
-    if (this.life >= this.maxLife) this.reset();
-  }
-}
-
-for (let i = 0; i < 40; i++) particles.push(new Particle());
-
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => { p.update(); p.draw(); });
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-/* ── 卡片光暈跟隨滑鼠 ── */
-document.querySelectorAll('.feat-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
-    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
-    card.style.setProperty('--mx', x + '%');
-    card.style.setProperty('--my', y + '%');
+// Photo Wall Filter
+const tabs = document.querySelectorAll('.filter-tab');
+const items = document.querySelectorAll('.photo-item');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    items.forEach(item => {
+      item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
+    });
   });
 });
-
-/* ── Scroll Reveal ── */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCat = document.getElementById('lightboxCat');
+const lightboxTitle = document.getElementById('lightboxTitle');
+items.forEach(item => {
+  item.addEventListener('click', () => {
+    const img = item.querySelector('img');
+    lightboxImg.src = img.src.replace(/w=\d+/, 'w=1200');
+    lightboxImg.alt = img.alt;
+    lightboxCat.textContent = item.querySelector('.photo-cat')?.textContent || '';
+    lightboxTitle.textContent = item.dataset.title || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal, .reveal-left').forEach(el => revealObserver.observe(el));
-
-/* ── 數字計數動畫 ── */
-function animateCount(el, target) {
-  const duration = 1600;
-  const start = performance.now();
-  function step(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    const val = Math.round(ease * target);
-    el.textContent = val.toLocaleString('zh-TW');
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-const countObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.dataset.target);
-      if (target) animateCount(el, target);
-      countObserver.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-document.querySelectorAll('.stat-num[data-target]').forEach(el => countObserver.observe(el));
-
-/* ── 圖片更換 ── */
-function applyImgUrl() {
-  const t = document.getElementById('imgTarget').value;
-  const url = document.getElementById('imgUrlInput').value.trim();
-  if (!url) { showToast('⚠️ 請先貼上圖片網址'); return; }
-  const img = document.getElementById('thumbImg' + parseInt(t));
-  if (img) img.src = url;
-  document.getElementById('imgUrlInput').value = '';
-  showToast('✅ 圖片已套用！記得儲存網頁');
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-async function imgToBase64(url) {
-  if (!url || !url.startsWith('blob:')) return url;
-  try {
-    const res = await fetch(url);
-    const blob = await res.blob();
-    return await new Promise((resolve, reject) => {
-      const fr = new FileReader();
-      fr.onload = () => resolve(fr.result);
-      fr.onerror = () => reject(new Error('FileReader failed'));
-      fr.readAsDataURL(blob);
-    });
-  } catch (e) { return url; }
-}
-
-async function saveHTML() {
-  const btn = document.querySelector('.save-btn');
-  btn.textContent = '儲存中...'; btn.disabled = true;
-  try {
-    for (const img of document.querySelectorAll('img[src]')) {
-      if (img.src && img.src.startsWith('blob:')) img.src = await imgToBase64(img.src);
-    }
-    const eds = document.querySelectorAll('[contenteditable]');
-    eds.forEach(el => el.removeAttribute('contenteditable'));
-    const blob = new Blob(['<!DOCTYPE html>\n' + document.documentElement.outerHTML], { type: 'text/html;charset=utf-8' });
-    eds.forEach(el => el.setAttribute('contenteditable', 'true'));
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = '共學與你_首頁.html';
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
-    document.getElementById('saveConfirm').classList.add('show');
-    setTimeout(() => document.getElementById('saveConfirm').classList.remove('show'), 3000);
-  } catch (err) {
-    showToast('❌ 儲存失敗，請再試一次');
-  } finally {
-    btn.textContent = '⬇ 儲存網頁'; btn.disabled = false;
-  }
-}
-
-document.querySelectorAll('[contenteditable]').forEach(el => {
-  el.addEventListener('click', e => e.stopPropagation());
-  el.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); el.blur(); } });
+});
+document.getElementById('lightboxClose').addEventListener('click', () => {
+  lightbox.classList.remove('open'); document.body.style.overflow = '';
+});
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
 });
 </script>
 </body>
